@@ -1,0 +1,36 @@
+{
+    "name": "jigl",
+    "description": "",
+    "version": "1.0.0",
+    "main": [
+      "../dist/jigl.js",
+      "../dist/jigl.css"
+    ],
+    "dependencies": {
+        "font-awesome": "~4.3.0",
+        "jquery": "~1.11.3"
+    },
+    "license": "MIT",
+    "keywords": [
+        "jquery",
+        "input",
+        "inputs"
+    ],
+    "authors": [
+        "Rich Gomez <0xkione@gmail.com> (http://www.richardwgomez.com)"
+    ],
+    "ignore": [
+        "*.js",
+        "*.json",
+        "node_modules",
+        "bower_components",
+        "../test",
+        "../src",
+        "README.md"
+    ],
+    "homepage": "https://github.com/0xKione/jquery-input-grid",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/0xkione/jquery-input-grid"
+    }
+}

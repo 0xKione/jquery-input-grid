@@ -1,0 +1,12 @@
+{
+    "name": "jquery-input-grid",
+    "version": "1.0.0",
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-cssmin": "^0.13.0",
+        "grunt-contrib-uglify": "^0.9.2"
+    }
+}
