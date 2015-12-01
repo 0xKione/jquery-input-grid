@@ -55,7 +55,7 @@ module.exports = function (grunt) {
         },
         uglify: {
             options: {
-                sourceMap: true,
+                sourceMap: false,
                 mangleProperties: false
             },
             target: {
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
         },
         cssmin: {
             options: {
-                sourceMap: true,
+                sourceMap: false,
                 keepSpecialComments: 0
             },
             target: {
