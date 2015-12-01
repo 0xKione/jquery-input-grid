@@ -24,10 +24,10 @@ module.exports = function (grunt) {
     // Library components to put together
     var mainComponents = {
         js: [
-            './../src/js/inputs.js'
+            './src/js/inputs.js'
         ],
         css: [
-            './../src/css/inputs.css'
+            './src/css/inputs.css'
         ]
     };
     
@@ -80,25 +80,25 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: rootDir,
                     src: devDependencies.js,
-                    dest: '../src/js/vendor/',
+                    dest: './src/js/vendor/',
                     flatten: true,
                     expand: true
                 }, {
                     cwd: rootDir,
                     src: devDependencies.css,
-                    dest: '../src/css/vendor/',
+                    dest: './src/css/vendor/',
                     flatten: true,
                     expand: true
                 }, {
                     cwd: rootDir,
                     src: devDependencies.fonts,
-                    dest: '../src/css/fonts/',
+                    dest: './src/css/fonts/',
                     flatten: true,
                     expand: true
                 }, {
                     cwd: rootDir,
                     src: assembledComponents,
-                    dest: '../src/',
+                    dest: './src/',
                     flatten: true,
                     expand: true
                 }]
@@ -107,7 +107,7 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: rootDir,
                     src: assembledComponents,
-                    dest: '../dist/',
+                    dest: './dist/',
                     flatten: true,
                     expand: true
                 }]

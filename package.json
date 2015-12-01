@@ -8,5 +8,10 @@
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-cssmin": "^0.13.0",
         "grunt-contrib-uglify": "^0.9.2"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/0xkione/jquery-input-grid"
     }
 }

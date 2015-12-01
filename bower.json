@@ -1,10 +1,10 @@
 {
     "name": "jigl",
-    "description": "",
+    "description": "A library built on top of jQuery to support multiple types of inputs that self-validate and provide a modern style.",
     "version": "1.0.0",
     "main": [
-      "../dist/jigl.js",
-      "../dist/jigl.css"
+      "./dist/jigl.js",
+      "./dist/jigl.css"
     ],
     "dependencies": {
         "font-awesome": "~4.3.0",
@@ -22,10 +22,10 @@
     "ignore": [
         "*.js",
         "*.json",
-        "node_modules",
-        "bower_components",
-        "../test",
-        "../src",
+        "./node_modules",
+        "./bower_components",
+        "./test",
+        "./src",
         "README.md"
     ],
     "homepage": "https://github.com/0xKione/jquery-input-grid",
