@@ -155,6 +155,13 @@ var Jigl = function() {
             parentTagSelector = "body";
         }
 
+        // HACK: Handle autocomplete by rechecking all fields in form
+        $(parentTagSelector).find(".jigl-text .jigl-input-field").on("blur", function(event) {
+            event.preventDefault();
+
+            $(this).parents("form").find(".jigl-text .jigl-input-field").keyup();
+        });
+
         $(parentTagSelector).find(".jigl-input-field, .jigl-select, .jigl-range").on("focus", function(event) {
             event.preventDefault();
 
