@@ -65,7 +65,7 @@ gulp.task('minify-js', function() {
 
 gulp.task('minify-css', function() {
   return gulp.src('./dist/jigl.css')
-    .pipe(cssmin())
+    .pipe(cssmin({ keepSpecialComments: 0 }))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./dist/'));
 });
