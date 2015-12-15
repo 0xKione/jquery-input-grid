@@ -79,7 +79,7 @@ var Jigl = function() {
 
         $(containerParentTag).find('.jigl-dropdown-arrow > i').removeClass('fa-caret-down').addClass('fa-caret-up');
 
-        var inputVal = $(containerParentTag).find('.jigl-input-field > div').text();
+        var inputVal = $(containerParentTag).find('.jigl-field > div').text();
 
         // Find the element whose text matches the already selected one
         var selectedOption = $(containerParentTag).find('.jigl-option').get().find(function(element, index, array) {
@@ -114,7 +114,7 @@ var Jigl = function() {
 
         // Set the input field back to its original value if the user didn't select one
         if (!valueSelected) {
-            $(containerParentTag).find('.jigl-input-field > div').html(selectOrigVal);
+            $(containerParentTag).find('.jigl-field > div').html(selectOrigVal);
         }
 
         selectOrigVal = "";
@@ -156,54 +156,54 @@ var Jigl = function() {
         }
 
         // HACK: Handle autocomplete by rechecking all fields in form
-        $(parentTagSelector).find(".jigl-text .jigl-input-field").on("blur", function(event) {
+        $(parentTagSelector).find(".jigl-text .jigl-field").on("blur", function(event) {
             event.preventDefault();
 
-            $(this).parents("form").find(".jigl-text .jigl-input-field").keyup();
+            $(this).parents("form").find(".jigl-text .jigl-field").keyup();
         });
 
-        $(parentTagSelector).find(".jigl-input-field, .jigl-select, .jigl-range").on("focus", function(event) {
+        $(parentTagSelector).find(".jigl-field, .jigl-select, .jigl-range").on("focus", function(event) {
             event.preventDefault();
 
             var inputTag = [];
-            if ($(this).hasClass('jigl-input-field')) {
-                inputTag = $(this).parents(".jigl-input");
+            if ($(this).hasClass('jigl-field')) {
+                inputTag = $(this).parents(".jigl");
             } else {
                 inputTag = $(this);
             }
 
-            var infoTag = inputTag.find('.jigl-input-info');
+            var infoTag = inputTag.find('.jigl-info');
 
             if (infoTag.length > 0) {
-                if (infoTag.hasClass('jigl-input-error'))
-                    infoTag.removeClass('jigl-input-error');
-                if (infoTag.hasClass('jigl-input-okay'))
-                    infoTag.removeClass('jigl-input-okay');
+                if (infoTag.hasClass('jigl-error'))
+                    infoTag.removeClass('jigl-error');
+                if (infoTag.hasClass('jigl-okay'))
+                    infoTag.removeClass('jigl-okay');
                 infoTag.html("");
             }
 
-            inputTag.removeClass("jigl-input-hover");
-            inputTag.addClass("jigl-input-focus");
+            inputTag.removeClass("jigl-hover");
+            inputTag.addClass("jigl-focus");
         });
 
-        $(parentTagSelector).find(".jigl-input-field, .jigl-select, .jigl-range").on("keyup", function(event) {
+        $(parentTagSelector).find(".jigl-field, .jigl-select, .jigl-range").on("keyup", function(event) {
             event.preventDefault();
 
             var inputTag = fieldTag = [];
             var isRangeInput = false;
-            if ($(this).hasClass('jigl-input-field')) {
-                inputTag = $(this).parents(".jigl-input");
+            if ($(this).hasClass('jigl-field')) {
+                inputTag = $(this).parents(".jigl");
                 fieldTagValue = $(this).val();
             } else if ($(this).hasClass('jigl-select')) {
                 inputTag = $(this);
-                fieldTagValue = $(this).find('.jigl-input-field > div').text();
+                fieldTagValue = $(this).find('.jigl-field > div').text();
             } else {
                 isRangeInput = true;
                 inputTag = $(this);
                 fieldTagValue = ($(this).find('input.jigl-range-min').val() != "" || $(this).find('input.jigl-range-max').val()) ? { "min": $(this).find('input.jigl-range-min').val(), "max": $(this).find('input.jigl-range-max').val() } : null;
             }
 
-            var infoTag = inputTag.find('.jigl-input-info');
+            var infoTag = inputTag.find('.jigl-info');
 
             if (infoTag.length > 0 && !inputTag.hasClass('jigl-no-valid')) {
                 var inputOK = false;
@@ -218,51 +218,51 @@ var Jigl = function() {
 
                 if (inputOK) {
                     // TODO: Do this better
-                    if (inputTag.hasClass("jigl-input-xs") || inputTag.hasClass("jigl-input-xxs") || inputTag.hasClass("jigl-input-micro")) {
+                    if (inputTag.hasClass("jigl-xs") || inputTag.hasClass("jigl-xxs") || inputTag.hasClass("jigl-micro")) {
                         infoTag.html("<i class='fa fa-check'></i>");
                     } else {
                         infoTag.html("OK");
                     }
-                    infoTag.addClass('jigl-input-okay');
+                    infoTag.addClass('jigl-okay');
                 } else {
                     // TODO: Do this better
-                    if (inputTag.hasClass("jigl-input-xs") || inputTag.hasClass("jigl-input-xxs") || inputTag.hasClass("jigl-input-micro")) {
+                    if (inputTag.hasClass("jigl-xs") || inputTag.hasClass("jigl-xxs") || inputTag.hasClass("jigl-micro")) {
                         infoTag.html("<i class='fa fa-times'></i>");
                     } else {
                         infoTag.html("Invalid");
                     }
-                    infoTag.addClass('jigl-input-error');
+                    infoTag.addClass('jigl-error');
                 }
             }
         });
 
-        $(parentTagSelector).find(".jigl-input-field, .jigl-select, .jigl-range").on("blur", function(event) {
+        $(parentTagSelector).find(".jigl-field, .jigl-select, .jigl-range").on("blur", function(event) {
             event.preventDefault();
 
             var inputTag = [];
-            if ($(this).hasClass('jigl-input-field')) {
-                inputTag = $(this).parents(".jigl-input");
+            if ($(this).hasClass('jigl-field')) {
+                inputTag = $(this).parents(".jigl");
             } else if ($(this).hasClass('jigl-select')) {
                 inputTag = $(this);
             } else {
                 inputTag = $(this);
             }
 
-            inputTag.removeClass("jigl-input-focus");
+            inputTag.removeClass("jigl-focus");
         });
 
         // Set up hover events for inputs that require it
         $(parentTagSelector).find(".jigl-hoverable").on('mouseover', function(event) {
-            if (!$(this).hasClass('jigl-input-focus'))
-                $(this).addClass('jigl-input-hover');
+            if (!$(this).hasClass('jigl-focus'))
+                $(this).addClass('jigl-hover');
         });
 
         $(parentTagSelector).find(".jigl-hoverable").on('mouseleave', function(event) {
-            $(this).removeClass('jigl-input-hover');
+            $(this).removeClass('jigl-hover');
         });
 
         $(parentTagSelector).find(".jigl-text").on('click', function(event) {
-            $(this).find('.jigl-input-field').focus();
+            $(this).find('.jigl-field').focus();
         });
 
         $(parentTagSelector).find(".jigl-select").on('click', function(event) {
@@ -287,7 +287,7 @@ var Jigl = function() {
                 return;
 
             var inputTag = $(this).find('input');
-            var fieldTag = $(this).find('.jigl-input-field > div');
+            var fieldTag = $(this).find('.jigl-field > div');
 
             var keyCode = event.keyCode;
             var currentChoiceTag = $('.jigl-option.jigl-option-selected', dropdownPanelTag).first();
@@ -421,22 +421,22 @@ var Jigl = function() {
         });
 
         $(parentTagSelector).find(".jigl-select").smartResize(function(event) {
-            if ($(this).find('.jigl-input-field > div').text() == "") {
-                $(this).find('.jigl-input-field > span').hide();
+            if ($(this).find('.jigl-field > div').text() == "") {
+                $(this).find('.jigl-field > span').hide();
                 return;
             }
 
-            $(this).find('.jigl-input-field > div').css("width", "");
+            $(this).find('.jigl-field > div').css("width", "");
 
-            var viewWidth = $(this).find('.jigl-input-container').width();
-            var textTagWidth = $(this).find('.jigl-input-field > div').width();
-            var ellipsisWidth = $(this).find('.jigl-input-field > span').width();
+            var viewWidth = $(this).find('.jigl-container').width();
+            var textTagWidth = $(this).find('.jigl-field > div').width();
+            var ellipsisWidth = $(this).find('.jigl-field > span').width();
 
             if (textTagWidth > viewWidth) {
-                $(this).find('.jigl-input-field > div').width(viewWidth - ellipsisWidth);
-                $(this).find('.jigl-input-field > span').show();
+                $(this).find('.jigl-field > div').width(viewWidth - ellipsisWidth);
+                $(this).find('.jigl-field > span').show();
             } else {
-                $(this).find('.jigl-input-field > span').hide();
+                $(this).find('.jigl-field > span').hide();
             }
 
         });
@@ -449,7 +449,7 @@ var Jigl = function() {
 
             // If the option belongs to a select input or a range input
             if ($(this).parents('.jigl-select').length > 0) {
-                $(this).parents('.jigl-input-container').find(".jigl-input-field div").html($(this).text());
+                $(this).parents('.jigl-container').find(".jigl-field div").html($(this).text());
 
                 $(this).parents('.jigl-select').resize();
             } else {
@@ -463,9 +463,9 @@ var Jigl = function() {
             // If the option belongs to a select input or a range input
             if ($(this).parents('.jigl-select').length > 0) {
                 if ($(this).hasClass("jigl-option-selected")) {
-                    $(this).parents('.jigl-input-container').find("input").attr("value", $(this).attr("data-value"));
-                    $(this).parents('.jigl-input-container').find("input").val($(this).attr("data-value"));
-                    $(this).parents('.jigl-input-container').find(".jigl-input-field").attr("title", $(this).text());
+                    $(this).parents('.jigl-container').find("input").attr("value", $(this).attr("data-value"));
+                    $(this).parents('.jigl-container').find("input").val($(this).attr("data-value"));
+                    $(this).parents('.jigl-container').find(".jigl-field").attr("title", $(this).text());
                     $(this).removeClass('jigl-option-selected');
                     $(this).parents('.jigl-select').resize();
                     $(this).parents('.jigl-select').find("input").change();
@@ -491,7 +491,7 @@ var Jigl = function() {
             parentTagSelector = "body";
         }
 
-        $(parentTagSelector).find(".jigl-input").data({ "valid": false });
+        $(parentTagSelector).find(".jigl").data({ "valid": false });
 
         // Email inputs must have the form "user@domain.extension"
         $(parentTagSelector).find(".jigl-email-input").data({
@@ -529,24 +529,24 @@ var Jigl = function() {
         }
 
         // Set up set/get value functions
-        $(parentTagSelector).find('.jigl-input').get().forEach(function(value, index, array) {
+        $(parentTagSelector).find('.jigl').get().forEach(function(value, index, array) {
             $(value).data({
                 "val": function(newVal) {
                     if (!newVal) {      // Getter
                         if ($(value).hasClass('jigl-select')) {
-                            return $(value).find('.jigl-input-container > input').val();
+                            return $(value).find('.jigl-container > input').val();
                         } else if ($(value).hasClass('jigl-range')) {
                             return {
                                 "min": $(value).find('.jigl-range-dropdown .jigl-range-min').val(),
                                 "max": $(value).find('.jigl-range-dropdown .jigl-range-max').val()
                             };
                         } else {
-                            return $(value).find('.jigl-input-field').val();
+                            return $(value).find('.jigl-field').val();
                         }
                     } else {            // Setter
                         if ($(value).hasClass('jigl-select')) {
-                            $(value).find('.jigl-input-container > input').val(newVal);
-                            $(value).find('.jigl-input-container > input').attr('value', newVal);
+                            $(value).find('.jigl-container > input').val(newVal);
+                            $(value).find('.jigl-container > input').attr('value', newVal);
                         } else if ($(value).hasClass('jigl-range')) {
                             if (!newVal.min || !newVal.max)
                                 return;
@@ -556,49 +556,49 @@ var Jigl = function() {
                             $(value).find('.jigl-range-dropdown .jigl-range-max').val(newVal.max);
                             $(value).find('.jigl-range-dropdown .jigl-range-max').attr('value', newVal.max);
                         } else {
-                            $(value).find('.jigl-input-field').val(newVal);
-                            $(value).find('.jigl-input-field').attr('value', newVal);
+                            $(value).find('.jigl-field').val(newVal);
+                            $(value).find('.jigl-field').attr('value', newVal);
                         }
                     }
                 },
                 "text": function(newText) {
                     if (!newText) {     // Getter
                         if ($(value).hasClass('jigl-select')) {
-                            return $(value).find('.jigl-input-container > .jigl-input-field > div').text();
+                            return $(value).find('.jigl-container > .jigl-field > div').text();
                         } else if ($(value).hasClass('jigl-range')) {
                             return {
-                                "min": $(value).find('.jigl-input-field .jigl-range-min').text(),
-                                "max": $(value).find('.jigl-input-field .jigl-range-max').text()
+                                "min": $(value).find('.jigl-field .jigl-range-min').text(),
+                                "max": $(value).find('.jigl-field .jigl-range-max').text()
                             };
                         } else {
-                            return $(value).find('.jigl-input-field').val();
+                            return $(value).find('.jigl-field').val();
                         }
                     } else {            // Setter
                         if ($(value).hasClass('jigl-select')) {
-                            $(value).find('.jigl-input-container > .jigl-input-field > div').text(newText);
-                            $(value).find('.jigl-input-container > .jigl-input-field').attr('title', newText);
+                            $(value).find('.jigl-container > .jigl-field > div').text(newText);
+                            $(value).find('.jigl-container > .jigl-field').attr('title', newText);
                         } else if ($(value).hasClass('jigl-range')) {
                             if (!newText.min || !newText.max)
                                 return;
 
-                            $(value).find('.jigl-input-field .jigl-range-min').text(newText.min);
-                            $(value).find('.jigl-input-field .jigl-range-max').text(newText.max);
+                            $(value).find('.jigl-field .jigl-range-min').text(newText.min);
+                            $(value).find('.jigl-field .jigl-range-max').text(newText.max);
                         } else {
-                            $(value).find('.jigl-input-field').val(newText);
-                            $(value).find('.jigl-input-field').attr('value', newText);
+                            $(value).find('.jigl-field').val(newText);
+                            $(value).find('.jigl-field').attr('value', newText);
                         }
                     }
                 },
                 "setValues": function(newVal) {
                     if ($(value).hasClass('jigl-select')) {
                         // Set the values with the correct value
-                        $(value).find('.jigl-input-container > input').val(newVal);
-                        $(value).find('.jigl-input-container > input').attr('value', newVal);
+                        $(value).find('.jigl-container > input').val(newVal);
+                        $(value).find('.jigl-container > input').attr('value', newVal);
 
                         // Set the text with the correct value
                         var textValue = $(value).find('.jigl-option[data-value="' + newVal + '"]').html();
-                        $(value).find('.jigl-input-container > .jigl-input-field > div').text(textValue);
-                        $(value).find('.jigl-input-container > .jigl-input-field').attr('title', textValue);
+                        $(value).find('.jigl-container > .jigl-field > div').text(textValue);
+                        $(value).find('.jigl-container > .jigl-field').attr('title', textValue);
                     } else if ($(value).hasClass('jigl-range')) {
                         if (!newVal.min || !newVal.max)
                             return;
@@ -608,8 +608,8 @@ var Jigl = function() {
                         $(value).find('.jigl-range-dropdown .jigl-range-max').val(newVal.max);
                         $(value).find('.jigl-range-dropdown .jigl-range-max').attr('value', newVal.max);
                     } else {
-                        $(value).find('.jigl-input-field').val(newVal);
-                        $(value).find('.jigl-input-field').attr('value', newVal);
+                        $(value).find('.jigl-field').val(newVal);
+                        $(value).find('.jigl-field').attr('value', newVal);
                     }
                 }
             });
@@ -635,16 +635,16 @@ var Jigl = function() {
                 },
                 "minText": function(newText) {
                     if (!newText) {      // Getter
-                        return $(value).find('.jigl-input-field .jigl-range-min').text();
+                        return $(value).find('.jigl-field .jigl-range-min').text();
                     } else {            // Setter
-                        $(value).find('.jigl-input-field .jigl-range-min').text(newText);
+                        $(value).find('.jigl-field .jigl-range-min').text(newText);
                     }
                 },
                 "maxText": function(newText) {
                     if (!newText) {      // Getter
-                        return $(value).find('.jigl-input-field .jigl-range-max').text();
+                        return $(value).find('.jigl-field .jigl-range-max').text();
                     } else {            // Setter
-                        $(value).find('.jigl-input-field .jigl-range-max').text(newText);
+                        $(value).find('.jigl-field .jigl-range-max').text(newText);
                     }
                 }
             });
@@ -682,24 +682,25 @@ var Jigl = function() {
         },
 
         resetInputs: function(parentTag) {
-            var inputTags = parentTag.find(".jigl-input");
+            var inputTags = parentTag.find(".jigl");
 
             // Set all required inputs back to "Required"
             inputTags.get().forEach(function(value, index, array) {
-                var infoTag = $(value).find(".jigl-input-info");
+                var infoTag = $(value).find(".jigl-info");
                 if (infoTag.length > 0) {
-                    infoTag.removeClass('jigl-input-error');
-                    infoTag.removeClass('jigl-input-okay');
+                    infoTag.removeClass('jigl-error');
+                    infoTag.removeClass('jigl-okay');
 
                     // TODO: Do this better
-                    if ($(value).hasClass("jigl-input-xs") || $(value).hasClass("jigl-input-xxs") || $(value).hasClass("jigl-input-micro")) {
+                    markValidated();
+                    if ($(value).hasClass("jigl-xs") || $(value).hasClass("jigl-xxs") || $(value).hasClass("jigl-micro")) {
                         infoTag.html("<i class='fa fa-exclamation'></i>");
                     } else {
                         infoTag.html("Required");
                     }
                 }
 
-                $(value).find('.jigl-input-field').val("");        // Clear all the input field values
+                $(value).find('.jigl-field').val("");        // Clear all the input field values
             });
         }
     }

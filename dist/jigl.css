@@ -3,6 +3,9 @@
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
+.jigl:focus {
+  outline: none; }
+
 /* Shared Styles */
 .jigl {
   border: 1px solid #666;
