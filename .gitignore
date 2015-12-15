@@ -1,4 +1,5 @@
 bower_components/
 node_modules/
-prod/
-src/jigl.*
+src/js/vendor
+src/css/fonts
+src/css/vendor
