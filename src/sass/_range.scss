@@ -1,0 +1,67 @@
+/* Range Styles */
+.jigl-range {
+    .jigl-field {
+        cursor: pointer;
+        padding-top: 2px;
+    }
+
+    cursor: pointer;
+}
+
+.jigl-range > .jigl-input-label {
+    float: none;
+}
+
+.jigl-range-dropdown {
+    position: absolute;
+    z-index: 1000;
+    min-width: 99.5%;
+    font-size: 16px;
+    left: 1px;
+    right: -50%;
+    box-shadow: 0px 2px 4px;
+    max-height: 500px;
+    overflow-y: auto;
+    display: none;
+    background-color: rgba(252, 252, 252, 0.975);
+    color: #222;
+}
+
+.jigl-range-container {
+    float: left;
+    width: 48%;
+}
+
+.jigl-range-separator {
+    border: 0;
+    color: #222;
+    background-color: #222;
+    display: inline-block;
+    height: 1px;
+    width: 10px;
+    position: relative;
+    vertical-align: middle;
+    float: left;
+    margin-top: 23px;
+}
+
+.jigl-range-input {
+    width: 85%;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.jigl-range-suggestions > ul {
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+@media (max-width: 1250px) {
+    .jigl-range-dropdown {
+        right: -100%;
+    }
+}

@@ -1,0 +1,210 @@
+/*!
+ * jigl v1.1.0 (https://github.com/0xKione/jquery-input-grid)
+ * Copyright (c) 2015 Rich Gomez
+ * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
+ */
+
+/* Shared Styles */ 
+.jigl {
+    border: 1px solid #666;
+    background-color: #FFF;
+    position: relative;
+    min-height: 1px;
+}
+
+.jigl-focus {
+    box-shadow: 0 0 3px rgba(0, 63, 148, 0.9);
+    border: 1px solid gray;
+    z-index: 1000;
+}
+
+.jigl-invalid {
+    box-shadow: 0 0 3px rgba(235, 10, 10, 0.9);
+    border: 1px solid gray;
+    z-index: 1001;
+}
+
+.jigl-hover {
+    box-shadow: 0 0 3px rgba(127, 127, 127, 0.8);
+    border: 1px solid gray;
+}
+
+.jigl-xl {
+    width: 100%;
+}
+
+.jigl-lg {
+    width: (100 / 2) * 1%;
+    float: left;
+}
+
+.jigl-md {
+    width: (100 / 3 + 0.00002) * 1%;
+    float: left;
+}
+
+.jigl-sm {
+    width: (100 / 4) * 1%;
+    float: left;
+}
+
+.jigl-xs {
+    width: (100 / 5) * 1%;
+    float: left;
+}
+
+.jigl-mini {
+    width: (100 / 6) * 1%;
+    float: left;
+}
+
+.jigl-top {
+    border-bottom: 1px dotted gray;
+}
+
+.jigl-middle {
+    border-top: none;
+    border-bottom: 1px dotted gray;
+}
+
+.jigl-bottom {
+    border-top: none;
+}
+
+.jigl-top-left {
+    border-right: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+}
+
+.jigl-top-center {
+    border-right: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+    border-left: none;
+}
+
+.jigl-top-right {
+    border-bottom: 1px dotted gray;
+    border-left: none;
+    float: none;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.jigl-mid-left {
+    border-top: none;
+    border-right: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+}
+
+.jigl-mid-center {
+    border-top: none;
+    border-right: 1px dotted gray;
+    border-bottom: 1px dotted gray;
+    border-left: none;
+}
+
+.jigl-mid-right {
+    border-top: none;
+    border-bottom: 1px dotted gray;
+    border-left: none;
+    float: none;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.jigl-bottom-left {
+    border-top: none;
+    border-right: 1px dotted gray;
+}
+
+.jigl-bottom-center {
+    border-top: none;
+    border-right: 1px dotted gray;
+    border-left: none;
+}
+
+.jigl-bottom-right {
+    border-top: none;
+    border-left: none;
+    float: none;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.jigl-label {
+    padding-left: 10px;
+    font-size: 11px;
+    color: darkgray;
+    text-transform: uppercase;
+}
+
+.jigl-info {
+    padding-top: 2px;
+    padding-right: 5px;
+    font-size: 9px;
+    color: rgb(127, 127, 127);
+    text-transform: uppercase;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.jigl-error {
+    color: rgb(245, 125, 125);
+}
+
+.jigl-okay {
+    color: rgb(95, 185, 95);
+}
+
+.jigl-container {
+    padding-left: 10px;
+}
+
+.jigl-field {
+    border: 0;
+    height: 26px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    outline: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.jigl-dropdown-arrow {
+    position: absolute;
+    right: 5px;
+    bottom: 8px;
+    font-size: 16px;
+}
+
+.jigl-option {
+    font-size: 16px;
+    white-space: nowrap;
+    color: #222;
+}
+
+.jigl-option-empty {
+    height: 28px;
+}
+
+.jigl-option-selected {
+    background-color: rgb(134, 181, 217);
+    cursor: pointer;
+}
+
+/*.jigl-input-range {
+    padding-left: 15.5%;
+    width: 45%; 
+    float: left;
+    height: 26px;
+}*/
+
+@import 'text';
+@import 'select';
+@import 'range';
+@import 'textarea';

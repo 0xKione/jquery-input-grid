@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 
 var assign = Object.assign || require('object.assign')
@@ -24,8 +26,35 @@ var babelOptions = {
   ]
 };
 
+var devDependencies = {
+  js: [
+    './bower_components/jquery/dist/jquery.js'
+  ],
+  css: [
+    './bower_components/font-awesome/css/font-awesome.css'
+  ],
+  fonts: [
+    './bower_components/font-awesome/fonts/*.*'
+  ]
+};
+
+gulp.task('js-dependencies', function() {
+  return gulp.src(devDependencies.js)
+    .pipe(gulp.dest('./src/js/vendor'))
+});
+
+gulp.task('css-dependencies', function() {
+  return gulp.src(devDependencies.css)
+    .pipe(gulp.dest('./src/css/vendor'))
+});
+
+gulp.task('font-dependencies', function() {
+  return gulp.src(devDependencies.fonts)
+    .pipe(gulp.dest('./src/css/fonts'))
+});
+
 gulp.task('clean', function() {
-  return gulp.src('./dist/')
+  return gulp.src(['./dist/', './**/vendor/'])
     .pipe(vinylPaths(del));
 });
 
@@ -43,15 +72,9 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-//gulp.task('sass', function() {
-//  return gulp.src("./src/css/*.scss")
-//    .pipe(sass().on('error', sass.logError))
-//    .pipe(gulp.dest('./dist/'));
-//});
-
-// Remove me once SASS is in place
 gulp.task('sass', function() {
-  return gulp.src("./src/css/*.css")
+  return gulp.src("./src/sass/*.scss")
+    .pipe(sass().on('error', sass.logError))
     .pipe(rename('jigl.css'))
     .pipe(gulp.dest('./dist/'));
 });
@@ -72,6 +95,7 @@ gulp.task('minify-css', function() {
 
 gulp.task('default', function(callback) {
   return runSequence(
+    ['js-dependencies', 'css-dependencies', 'font-dependencies'],
     'lint',
     'build',
     'sass',
