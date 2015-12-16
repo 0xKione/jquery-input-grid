@@ -217,21 +217,13 @@ var Jigl = function() {
                 }
 
                 if (inputOK) {
-                    // TODO: Do this better
-                    if (inputTag.hasClass("jigl-xs") || inputTag.hasClass("jigl-xxs") || inputTag.hasClass("jigl-micro")) {
-                        infoTag.html("<i class='fa fa-check'></i>");
-                    } else {
-                        infoTag.html("OK");
-                    }
+                    infoTag.removeClass('jigl-error');
                     infoTag.addClass('jigl-okay');
+                    markValidated(inputTag);
                 } else {
-                    // TODO: Do this better
-                    if (inputTag.hasClass("jigl-xs") || inputTag.hasClass("jigl-xxs") || inputTag.hasClass("jigl-micro")) {
-                        infoTag.html("<i class='fa fa-times'></i>");
-                    } else {
-                        infoTag.html("Invalid");
-                    }
+                    infoTag.removeClass('jigl-okay');
                     infoTag.addClass('jigl-error');
+                    markValidated(inputTag);
                 }
             }
         });
@@ -247,6 +239,8 @@ var Jigl = function() {
             } else {
                 inputTag = $(this);
             }
+
+            $(this).keyup();
 
             inputTag.removeClass("jigl-focus");
         });
@@ -650,6 +644,39 @@ var Jigl = function() {
             });
         });
     };
+        
+    var markValidated = function(element) {
+        var infoTag = $(element).find('.jigl-info');
+
+        if (!infoTag)
+            return;
+
+        var minifyInfo = infoTag.hasClass('info-minify');
+
+
+        if (infoTag.hasClass('jigl-okay')) {
+            if (minifyInfo) {
+                infoTag.html("<i class='fa fa-check'></i>");
+            } else {
+                infoTag.html("OK");
+            }
+        } else if (infoTag.hasClass('jigl-error')) {
+            if (minifyInfo) {
+                infoTag.html("<i class='fa fa-times'></i>");
+            } else {
+                infoTag.html("Invalid");
+            }
+        } else {
+            if (infoTag.hasClass('jigl-no-valid'))
+                return;
+
+            if (minifyInfo) {
+                infoTag.html("<i class='fa fa-exclamation'></i>");
+            } else {
+                infoTag.html("Required");
+            }
+        }
+    };
 
     return {
         init: function() {
@@ -691,13 +718,7 @@ var Jigl = function() {
                     infoTag.removeClass('jigl-error');
                     infoTag.removeClass('jigl-okay');
 
-                    // TODO: Do this better
-                    markValidated();
-                    if ($(value).hasClass("jigl-xs") || $(value).hasClass("jigl-xxs") || $(value).hasClass("jigl-micro")) {
-                        infoTag.html("<i class='fa fa-exclamation'></i>");
-                    } else {
-                        infoTag.html("Required");
-                    }
+                    markValidated(value);
                 }
 
                 $(value).find('.jigl-field').val("");        // Clear all the input field values
