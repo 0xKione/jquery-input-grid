@@ -54,7 +54,7 @@ gulp.task('font-dependencies', function() {
 });
 
 gulp.task('clean', function() {
-  return gulp.src(['./dist/', './src/**/vendor/'])
+  return gulp.src(['./dist/', './src/**/vendor/', './src/css/fonts/'])
     .pipe(vinylPaths(del));
 });
 
