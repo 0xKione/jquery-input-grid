@@ -33,13 +33,14 @@ Then clone the repository and run Gulp
 $ git clone https://github.com/0xKione/jquery-input-grid.git
 $ cd path/to/repo
 $ npm install
+$ bower install
 $ gulp
 ```
 
 And you're good to go!
 
 ## Status
-I am still actively contributing to this repository making improvements and bug fixes.
+I am still actively contributing to this repository making improvements and bug fixes. This is my first real GitHub/Bower library so there have been a few unneccesary releases, but I am getting more familiar with that process.
 
 This library was originally designed to work with a web app I am developing called [WageKick](https://wagekick.com) and turned into a side project.
 
