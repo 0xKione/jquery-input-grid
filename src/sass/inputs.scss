@@ -95,6 +95,10 @@
     height: 100%;
 }
 
+.jigl-top-right.jigl-md {
+    width: 33.34%;
+}
+
 .jigl-mid-left {
     border-top: none;
     border-right: 1px dotted gray;
@@ -118,6 +122,10 @@
     height: 100%;
 }
 
+.jigl-mid-right.jigl-md {
+    width: 33.34%;
+}
+
 .jigl-bottom-left {
     border-top: none;
     border-right: 1px dotted gray;
@@ -136,6 +144,10 @@
     position: relative;
     overflow: hidden;
     height: 100%;
+}
+
+.jigl-bottom-right.jigl-md {
+    width: 33.34%;
 }
 
 .jigl-label {
