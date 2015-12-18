@@ -25,7 +25,8 @@
 
 .jigl-hover {
   box-shadow: 0 0 3px rgba(127, 127, 127, 0.8);
-  border: 1px solid gray; }
+  border: 1px solid gray;
+  z-index: 1000; }
 
 .jigl-xl {
   width: 100%; }
