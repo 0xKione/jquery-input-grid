@@ -1,5 +1,5 @@
 /*!
- * jigl v1.1.0 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.1.3 (https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -100,20 +100,20 @@
     width: 33.34%;
 }
 
-.jigl-mid-left {
+.jigl-middle-left {
     border-top: none;
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
 }
 
-.jigl-mid-center {
+.jigl-middle-center {
     border-top: none;
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
     border-left: none;
 }
 
-.jigl-mid-right {
+.jigl-middle-right {
     border-top: none;
     border-bottom: 1px dotted gray;
     border-left: none;
@@ -123,7 +123,7 @@
     height: 100%;
 }
 
-.jigl-mid-right.jigl-md {
+.jigl-middle-right.jigl-md {
     width: 33.34%;
 }
 
