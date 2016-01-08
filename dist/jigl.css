@@ -28,26 +28,26 @@
   border: 1px solid gray;
   z-index: 1000; }
 
-.jigl-xl {
+.jigl-1 {
   width: 100%; }
 
-.jigl-lg {
+.jigl-2 {
   width: 50%;
   float: left; }
 
-.jigl-md {
+.jigl-3 {
   width: 33.33333%;
   float: left; }
 
-.jigl-sm {
+.jigl-4 {
   width: 25%;
   float: left; }
 
-.jigl-xs {
+.jigl-5 {
   width: 20%;
   float: left; }
 
-.jigl-mini {
+.jigl-6 {
   width: 16.66667%;
   float: left; }
 

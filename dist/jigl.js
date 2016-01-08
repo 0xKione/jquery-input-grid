@@ -1,5 +1,5 @@
 /*!
- * jigl v1.1.3 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.2.0 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -225,6 +225,8 @@ var Jigl = function() {
                     infoTag.addClass('jigl-error');
                     markValidated(inputTag);
                 }
+            } else {
+                inputTag.data().valid = true;
             }
         });
 
@@ -706,6 +708,26 @@ var Jigl = function() {
 
             // Trigger events to truncate select inputs
             $('.jigl-select').resize();
+        },
+
+        validateForm: function(formTag) {
+            if (!$(formTag).is('form')) {
+                console.log("Parameter is not a 'form' tag");
+                return;
+            }
+
+            var inputList = $(formTag).find('.jigl');
+
+            _.each(inputList, function(inputTag) {
+                // Select the correct tag to trigger event
+                var inputObj = $(inputTag);
+                if (!inputObj.hasClass('jigl-select') && !inputObj.hasClass('jigl-range')) {
+                    inputObj = inputObj.find('.jigl-field');
+                }
+
+                // Trigger the keyup event to validate
+                inputObj.trigger('keyup');
+            });
         },
 
         resetInputs: function(parentTag) {
