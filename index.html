@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A page to test capabilities of JIGL" />
+
+    <title>JIGL Test</title>
+
+    <link rel="stylesheet" type="text/css" href="src/css/vendor/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="dist/jigl.css" />
+  </head>
+  <body>
+    <h2>JIGL Test</h2>
+    <div>
+      <h3>Getting Setup</h3>
+      <div>
+        <code></code>
+      </div>
+    </div>
+    <div class="jigl jigl-1 jigl-text jigl-top" tabindex="1">
+      <div class="jigl-label">Password</div>
+      <div class="jigl-info">Required</div>
+      <div class="jigl-container">
+        <input class="jigl-field" type="text" />
+      </div>
+    </div>
+    
+    <div class="jigl jigl-1 jigl-select jigl-bottom" tabindex="0">
+      <div class="jigl-label">List</div>
+      <div class="jigl-info">Required</div>
+      <div class="jigl-container">
+          <span class="jigl-dropdown-arrow">
+              <i class="fa fa-caret-down"></i>
+          </span>
+          <input name="state" />
+          <div class="jigl-field">
+              <div></div>
+              <span>...</span>
+            </div>
+            <div class="jigl-select-dropdown">
+                <ul>
+                    <li class="jigl-option jigl-option-empty" data-value="0"></li>
+                    <li class="jigl-option" data-value="1">Value1</li>
+                    <li class="jigl-option" data-value="2">Value2</li>
+                    <li class="jigl-option" data-value="3">Value3</li>
+                    <li class="jigl-option" data-value="4">Value4</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="src/js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="dist/jigl.js"></script>
+
+    <script>
+      $(document).on('ready', function() {
+        Jigl.init();
+      });
+    </script>
+  </body>
+</html>

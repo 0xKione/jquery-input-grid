@@ -4,6 +4,7 @@ var gulp = require('gulp');
 
 var assign = Object.assign || require('object.assign')
 var babel = require('gulp-babel');
+var batch = require('gulp-batch');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-minify-css');
 var del = require('del');
@@ -13,6 +14,7 @@ var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var sass = require('gulp-sass');
 var vinylPaths = require('vinyl-paths');
+var watch = require('gulp-watch');
 
 var babelOptions = {
   modules: 'system',
@@ -91,6 +93,12 @@ gulp.task('minify-css', function() {
     .pipe(cssmin({ keepSpecialComments: 0 }))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('watch', function() {
+  watch(['index.html', 'src/js/*.js', 'src/sass/*.scss'], batch(function(events, done) {
+    gulp.start('default', done);
+  }));
 });
 
 gulp.task('default', function(callback) {
