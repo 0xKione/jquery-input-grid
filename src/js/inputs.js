@@ -183,7 +183,9 @@ var Jigl = function() {
             }
 
             inputTag.removeClass("jigl-hover");
-            inputTag.addClass("jigl-focus");
+            
+            if (!inputTag.hasClass('jigl-disabled'))
+                inputTag.addClass("jigl-focus");
         });
 
         $(parentTagSelector).find(".jigl-field, .jigl-select, .jigl-range").on("keyup", function(event) {
@@ -248,12 +250,12 @@ var Jigl = function() {
         });
 
         // Set up hover events for inputs that require it
-        $(parentTagSelector).find(".jigl-hoverable").on('mouseover', function(event) {
-            if (!$(this).hasClass('jigl-focus'))
+        $(parentTagSelector).find(".jigl").on('mouseover', function(event) {
+            if (!$(this).hasClass('jigl-focus') && !$(this).hasClass('jigl-disabled'))
                 $(this).addClass('jigl-hover');
         });
 
-        $(parentTagSelector).find(".jigl-hoverable").on('mouseleave', function(event) {
+        $(parentTagSelector).find(".jigl").on('mouseleave', function(event) {
             $(this).removeClass('jigl-hover');
         });
 
@@ -263,6 +265,11 @@ var Jigl = function() {
 
         $(parentTagSelector).find(".jigl-select").on('click', function(event) {
             event.stopPropagation();
+            
+            if ($(this).hasClass('jigl-disabled')) {
+                return;
+            }
+            
             if (!$(this).find('.jigl-select-dropdown').is(':visible')) {
                 showSelect(this);
             } else {
@@ -685,6 +692,9 @@ var Jigl = function() {
             setUpEvents();
             setUpValidation();
             setUpFunctions();
+            
+            // Set all inputs to disabled that are marked with the class
+            $('.jigl-disabled').find('input').attr('disabled', true);
 
             // Capture the window resize event for select inputs
             $(window).resize(function() {

@@ -177,6 +177,17 @@
   background-color: #86b5d9;
   cursor: pointer; }
 
+.jigl input[disabled],
+.jigl textarea[disabled] {
+  background: white; }
+
+.jigl-disabled,
+.jigl-disabled .jigl-field {
+  cursor: default; }
+
+.jigl-disabled .jigl-info {
+  display: none; }
+
 /*.jigl-input-range {
     padding-left: 15.5%;
     width: 45%; 
@@ -223,6 +234,13 @@
     margin-bottom: 0; }
     .jigl-select-dropdown > ul > li {
       padding: 3px 0 3px 5px; }
+
+.jigl-select.jigl-disabled {
+  cursor: default; }
+  .jigl-select.jigl-disabled .jigl-field {
+    cursor: default; }
+  .jigl-select.jigl-disabled .jigl-dropdown-arrow {
+    display: none; }
 
 /* Range Styles */
 .jigl-range {

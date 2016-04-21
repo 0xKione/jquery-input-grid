@@ -50,3 +50,15 @@
     display: none;
     background-color: rgba(252, 252, 252, 0.975);
 }
+
+.jigl-select.jigl-disabled {
+    .jigl-field {
+        cursor: default;
+    }
+    
+    .jigl-dropdown-arrow {
+        display: none;
+    }
+    
+    cursor: default;
+}
