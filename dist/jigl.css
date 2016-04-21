@@ -149,6 +149,20 @@
 .jigl-container {
   padding-left: 10px; }
 
+.jigl-hint {
+  position: absolute;
+  background: #333;
+  max-width: 250px;
+  padding: 5px;
+  border-radius: 10px;
+  right: 5px;
+  top: 14px;
+  z-index: 1200;
+  display: none; }
+  .jigl-hint > span {
+    color: #EEE;
+    font-size: 12px; }
+
 .jigl-field {
   border: 0;
   height: 26px;
@@ -181,12 +195,12 @@
 .jigl textarea[disabled] {
   background: white; }
 
-.jigl-disabled,
-.jigl-disabled .jigl-field {
+.jigl-disabled {
   cursor: default; }
-
-.jigl-disabled .jigl-info {
-  display: none; }
+  .jigl-disabled .jigl-field {
+    cursor: default; }
+  .jigl-disabled .jigl-info {
+    display: none; }
 
 /*.jigl-input-range {
     padding-left: 15.5%;

@@ -171,6 +171,10 @@ var Jigl = function() {
             } else {
                 inputTag = $(this);
             }
+            
+            if (inputTag.find('.jigl-hint').is(':visible')) {
+                inputTag.find('.jigl-hint').hide(100);
+            }
 
             var infoTag = inputTag.find('.jigl-info');
 
@@ -675,6 +679,8 @@ var Jigl = function() {
             } else {
                 infoTag.html("Invalid");
             }
+            $(element).find('.jigl-hint').show(100);
+            setTimeout(function() { $(element).find('.jigl-hint').hide(100); }, 10000);
         } else {
             if (infoTag.hasClass('jigl-no-valid'))
                 return;
