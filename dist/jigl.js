@@ -515,7 +515,7 @@ var Jigl = function() {
                 //(?=.*[a-z])             //should contain at least one lower case
                 //(?=.*[A-Z])             //should contain at least one upper case
                 //[a-zA-Z0-9]{7,}         //should contain at least 7 from the mentioned characters
-                var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+                var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
                 return re.test(input);
             }
         });
@@ -673,6 +673,7 @@ var Jigl = function() {
             } else {
                 infoTag.html("OK");
             }
+            $(element).find('.jigl-hint').hide(100);
         } else if (infoTag.hasClass('jigl-error')) {
             if (minifyInfo) {
                 infoTag.html("<i class='fa fa-times'></i>");
