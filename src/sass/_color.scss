@@ -1,0 +1,112 @@
+/* Color Styles */ 
+.jigl {
+    border-color: #666;
+    background-color: #FFF;
+}
+
+.jigl-focus {
+    box-shadow: 0 0 3px rgba(0, 63, 148, 0.9);
+    border-color: gray;
+}
+
+.jigl-invalid {
+    box-shadow: 0 0 3px rgba(235, 10, 10, 0.9);
+    border-color: gray;
+}
+
+.jigl-hover {
+    box-shadow: 0 0 3px rgba(127, 127, 127, 0.8);
+    border-color: gray;
+}
+
+.jigl-label {
+    color: darkgray;
+}
+
+.jigl-info {
+    color: rgb(127, 127, 127);
+}
+
+.jigl-error {
+    color: rgb(245, 125, 125);
+}
+
+.jigl-okay {
+    color: rgb(95, 185, 95);
+}
+
+.jigl-hint {
+    > span {
+        color: #EEE;
+    }
+    
+    background: #333;
+}
+
+.jigl-option {
+    color: #222;
+}
+
+.jigl-option-selected {
+    background-color: rgb(134, 181, 217);
+}
+
+.jigl input[disabled],
+.jigl textarea[disabled] {
+    background: white;
+}
+
+.jigl-dark {
+    background-color: #666;
+    border-color: #444;
+
+    .jigl-label {
+        color: #DDD;
+    }
+
+    .jigl-info {
+        color: #DDD;
+    }
+
+    .jigl-error {
+        color: rgb(245, 125, 125);
+    }
+
+    .jigl-okay {
+        color: rgb(95, 185, 95);
+    }
+
+    .jigl-hint {
+        > span {
+            color: #222;
+        }
+        
+        background: #EEE;
+    }
+
+    .jigl-field {
+        background-color: #666;
+        color: #FFF;
+    }
+
+    .jigl-dropdown-arrow {
+        color: #DDD;
+    }
+
+    .jigl-select-dropdown {
+        background-color: #444;
+    }
+
+    .jigl-option {
+        color: #FFF;
+    }
+
+    .jigl-option-selected {
+        background-color: rgb(64, 111, 147);
+    }
+
+    .jigl input[disabled],
+    .jigl textarea[disabled] {
+        background: #666;
+    }
+}

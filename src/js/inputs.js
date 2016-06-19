@@ -212,24 +212,29 @@ var Jigl = function() {
             var infoTag = inputTag.find('.jigl-info');
 
             if (infoTag.length > 0 && !inputTag.hasClass('jigl-no-valid')) {
-                var inputOK = false;
+                if (fieldTagValue != "") {
+                    var inputOK = false;
 
-                if (inputTag.data().validate) {
-                    inputOK = inputTag.data().validate(fieldTagValue);
-                    inputTag.data().valid = inputOK;
-                } else {
-                    inputOK = fieldTagValue != "" || (isRangeInput && fieldTagValue != null);
-                    inputTag.data().valid = inputOK;
-                }
+                    if (inputTag.data().validate) {
+                        inputOK = inputTag.data().validate(fieldTagValue);
+                        inputTag.data().valid = inputOK;
+                    } else {
+                        inputOK = fieldTagValue != "" || (isRangeInput && fieldTagValue != null);
+                        inputTag.data().valid = inputOK;
+                    }
 
-                if (inputOK) {
-                    infoTag.removeClass('jigl-error');
-                    infoTag.addClass('jigl-okay');
-                    markValidated(inputTag);
+                    if (inputOK) {
+                        infoTag.removeClass('jigl-error');
+                        infoTag.addClass('jigl-okay');
+                        markValidated(inputTag);
+                    } else {
+                        infoTag.removeClass('jigl-okay');
+                        infoTag.addClass('jigl-error');
+                        markValidated(inputTag);
+                    }
                 } else {
-                    infoTag.removeClass('jigl-okay');
-                    infoTag.addClass('jigl-error');
-                    markValidated(inputTag);
+                    inputTag.data().valid = false;
+                    infoTag.html("Required");
                 }
             } else {
                 inputTag.data().valid = true;
@@ -249,6 +254,13 @@ var Jigl = function() {
             }
 
             $(this).keyup();
+
+            if (inputTag.find('.jigl-info').hasClass('jigl-error')) {
+                inputTag.find('.jigl-hint').show(100);
+                setTimeout(function() { inputTag.find('.jigl-hint').hide(100); }, 7000);
+            } else {
+                inputTag.find('.jigl-hint').hide(100);
+            }
 
             inputTag.removeClass("jigl-focus");
         });
@@ -515,7 +527,7 @@ var Jigl = function() {
                 //(?=.*[a-z])             //should contain at least one lower case
                 //(?=.*[A-Z])             //should contain at least one upper case
                 //[a-zA-Z0-9]{7,}         //should contain at least 7 from the mentioned characters
-                var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+                var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}/;
                 return re.test(input);
             }
         });
@@ -679,8 +691,6 @@ var Jigl = function() {
             } else {
                 infoTag.html("Invalid");
             }
-            $(element).find('.jigl-hint').show(100);
-            setTimeout(function() { $(element).find('.jigl-hint').hide(100); }, 10000);
         } else {
             if (infoTag.hasClass('jigl-no-valid'))
                 return;
