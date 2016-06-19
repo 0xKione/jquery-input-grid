@@ -61,11 +61,11 @@
     border-color: #444;
 
     .jigl-label {
-        color: white;
+        color: #DDD;
     }
 
     .jigl-info {
-        color: white;
+        color: #DDD;
     }
 
     .jigl-error {
@@ -86,11 +86,19 @@
 
     .jigl-field {
         background-color: #666;
+        color: #FFF;
+    }
+
+    .jigl-dropdown-arrow {
         color: #DDD;
     }
 
+    .jigl-select-dropdown {
+        background-color: #444;
+    }
+
     .jigl-option {
-        color: #DDD;
+        color: #FFF;
     }
 
     .jigl-option-selected {
