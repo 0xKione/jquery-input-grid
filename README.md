@@ -38,13 +38,13 @@ $ gulp
 $ gulp watch
 ```
 
-And you're good to go!
-
 To generate a release build
 ```sh
 $ cd path/to/repo
 $ gulp production
 ```
+
+And you're good to go!
 
 ## Status
 I am still actively contributing to this repository making improvements and bug fixes. This is my first real GitHub/Bower library so there have been a few unneccesary releases, but I am getting more familiar with that process.
