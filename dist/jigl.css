@@ -1,5 +1,5 @@
 /*!
- * jigl v1.1.3 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.2.2 (https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -8,24 +8,24 @@
 
 /* Shared Styles */
 .jigl {
-  border: 1px solid #666;
-  background-color: #FFF;
+  border-width: 1px;
+  border-style: solid;
   position: relative;
   min-height: 1px; }
 
 .jigl-focus {
-  box-shadow: 0 0 3px rgba(0, 63, 148, 0.9);
-  border: 1px solid gray;
+  border-width: 1px;
+  border-style: solid;
   z-index: 1000; }
 
 .jigl-invalid {
-  box-shadow: 0 0 3px rgba(235, 10, 10, 0.9);
-  border: 1px solid gray;
+  border-width: 1px;
+  border-style: solid;
   z-index: 1001; }
 
 .jigl-hover {
-  box-shadow: 0 0 3px rgba(127, 127, 127, 0.8);
-  border: 1px solid gray;
+  border-width: 1px;
+  border-style: solid;
   z-index: 1000; }
 
 .jigl-1 {
@@ -127,31 +127,22 @@
 .jigl-label {
   padding-left: 10px;
   font-size: 11px;
-  color: darkgray;
   text-transform: uppercase; }
 
 .jigl-info {
   padding-top: 2px;
   padding-right: 5px;
   font-size: 9px;
-  color: #7f7f7f;
   text-transform: uppercase;
   position: absolute;
   right: 0;
   top: 0; }
-
-.jigl-error {
-  color: #f57d7d; }
-
-.jigl-okay {
-  color: #5fb95f; }
 
 .jigl-container {
   padding-left: 10px; }
 
 .jigl-hint {
   position: absolute;
-  background: #333;
   max-width: 250px;
   padding: 5px;
   border-radius: 10px;
@@ -160,7 +151,6 @@
   z-index: 1200;
   display: none; }
   .jigl-hint > span {
-    color: #EEE;
     font-size: 12px; }
 
 .jigl-field {
@@ -181,19 +171,13 @@
 
 .jigl-option {
   font-size: 16px;
-  white-space: nowrap;
-  color: #222; }
+  white-space: nowrap; }
 
 .jigl-option-empty {
   height: 28px; }
 
 .jigl-option-selected {
-  background-color: #86b5d9;
   cursor: pointer; }
-
-.jigl input[disabled],
-.jigl textarea[disabled] {
-  background: white; }
 
 .jigl-disabled {
   cursor: default; }
@@ -202,12 +186,76 @@
   .jigl-disabled .jigl-info {
     display: none; }
 
-/*.jigl-input-range {
-    padding-left: 15.5%;
-    width: 45%; 
-    float: left;
-    height: 26px;
-}*/
+/* Color Styles */
+.jigl {
+  border-color: #666;
+  background-color: #FFF; }
+
+.jigl-focus {
+  box-shadow: 0 0 3px rgba(0, 63, 148, 0.9);
+  border-color: gray; }
+
+.jigl-invalid {
+  box-shadow: 0 0 3px rgba(235, 10, 10, 0.9);
+  border-color: gray; }
+
+.jigl-hover {
+  box-shadow: 0 0 3px rgba(127, 127, 127, 0.8);
+  border-color: gray; }
+
+.jigl-label {
+  color: darkgray; }
+
+.jigl-info {
+  color: #7f7f7f; }
+
+.jigl-error {
+  color: #f57d7d; }
+
+.jigl-okay {
+  color: #5fb95f; }
+
+.jigl-hint {
+  background: #333; }
+  .jigl-hint > span {
+    color: #EEE; }
+
+.jigl-option {
+  color: #222; }
+
+.jigl-option-selected {
+  background-color: #86b5d9; }
+
+.jigl input[disabled],
+.jigl textarea[disabled] {
+  background: white; }
+
+.jigl-dark {
+  background-color: #666;
+  border-color: #444; }
+  .jigl-dark .jigl-label {
+    color: white; }
+  .jigl-dark .jigl-info {
+    color: white; }
+  .jigl-dark .jigl-error {
+    color: #f57d7d; }
+  .jigl-dark .jigl-okay {
+    color: #5fb95f; }
+  .jigl-dark .jigl-hint {
+    background: #EEE; }
+    .jigl-dark .jigl-hint > span {
+      color: #222; }
+  .jigl-dark .jigl-field {
+    background-color: #666;
+    color: #DDD; }
+  .jigl-dark .jigl-option {
+    color: #DDD; }
+  .jigl-dark .jigl-option-selected {
+    background-color: #406f93; }
+  .jigl-dark .jigl input[disabled],
+  .jigl-dark .jigl textarea[disabled] {
+    background: #666; }
+
 /* Text Styles */
 .jigl-text {
   cursor: text; }
