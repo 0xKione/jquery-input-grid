@@ -70,7 +70,7 @@ var Jigl = function() {
         }
         dropdownTag.show();
 
-        if ($(containerParentTag).css('float') == 'none') {
+        if ($(containerParentTag).hasClass('jigl-top-right') || $(containerParentTag).hasClass('jigl-middle-right') || $(containerParentTag).hasClass('jigl-bottom-right')) {
             $(containerParentTag).css('overflow', 'initial');
             $(containerParentTag).css('float', 'right');
             $(containerParentTag).css('z-index', '1000');
@@ -711,6 +711,7 @@ var Jigl = function() {
             
             // Set all inputs to disabled that are marked with the class
             $('.jigl-disabled').find('input').attr('disabled', true);
+            $('.jigl-disabled').find('textarea').attr('disabled', true);
 
             // Capture the window resize event for select inputs
             $(window).resize(function() {

@@ -308,6 +308,10 @@
   .jigl-select.jigl-disabled .jigl-dropdown-arrow {
     display: none; }
 
+@media (max-width: 500px) {
+  .jigl-select-dropdown {
+    max-height: 200px; } }
+
 /* Range Styles */
 .jigl-range {
   cursor: pointer; }
