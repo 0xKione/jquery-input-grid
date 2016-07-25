@@ -74,6 +74,7 @@
 
 .jigl-bottom {
     border-top: none;
+    margin-top: 42px;
 }
 
 .jigl-top-left {
@@ -96,7 +97,7 @@
     height: 100%;
 }
 
-.jigl-top-right.jigl-md {
+.jigl-top-right.jigl-3 {
     width: 33.34%;
 }
 
@@ -117,25 +118,23 @@
     border-top: none;
     border-bottom: 1px dotted gray;
     border-left: none;
-    float: none;
-    position: relative;
-    overflow: hidden;
-    height: 100%;
 }
 
-.jigl-middle-right.jigl-md {
+.jigl-middle-right.jigl-3 {
     width: 33.34%;
 }
 
 .jigl-bottom-left {
     border-top: none;
     border-right: 1px dotted gray;
+    margin-top: 42px;
 }
 
 .jigl-bottom-center {
     border-top: none;
     border-right: 1px dotted gray;
     border-left: none;
+    margin-top: 42px;
 }
 
 .jigl-bottom-right {
@@ -145,9 +144,10 @@
     position: relative;
     overflow: hidden;
     height: 100%;
+    margin-top: 42px;
 }
 
-.jigl-bottom-right.jigl-md {
+.jigl-bottom-right.jigl-3 {
     width: 33.34%;
 }
 
