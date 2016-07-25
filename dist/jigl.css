@@ -59,8 +59,7 @@
   border-bottom: 1px dotted gray; }
 
 .jigl-bottom {
-  border-top: none;
-  margin-top: 42px; }
+  border-top: none; }
 
 .jigl-top-left {
   border-right: 1px dotted gray;
@@ -103,14 +102,12 @@
 
 .jigl-bottom-left {
   border-top: none;
-  border-right: 1px dotted gray;
-  margin-top: 42px; }
+  border-right: 1px dotted gray; }
 
 .jigl-bottom-center {
   border-top: none;
   border-right: 1px dotted gray;
-  border-left: none;
-  margin-top: 42px; }
+  border-left: none; }
 
 .jigl-bottom-right {
   border-top: none;
@@ -118,8 +115,7 @@
   float: none;
   position: relative;
   overflow: hidden;
-  height: 100%;
-  margin-top: 42px; }
+  height: 100%; }
 
 .jigl-bottom-right.jigl-3 {
   width: 33.34%; }

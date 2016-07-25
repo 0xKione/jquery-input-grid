@@ -7,7 +7,7 @@ JIGL is a library of customizable form-compliant input fields and groups based o
 - A visually appealing style with built-in labels
 
 ## Latest Version
-1.2.2
+1.2.4
 
 ## Downloading Library
 This library is available using Bower. To use it in your project perform the following steps

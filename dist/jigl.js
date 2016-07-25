@@ -703,6 +703,27 @@ var Jigl = function() {
         }
     };
 
+    var checkLayoutStyles = function() {
+        // Check bottom container styles
+        var bottomContainers = $('.jigl-bottom, .jigl-bottom-left, .jigl-bottom-center, .jigl-bottom-right');
+
+        $.each(bottomContainers, function(index, value) {
+            var siblings = $(value).siblings('.jigl-middle, .jigl-middle-left, .jigl-middle-center, .jigl-middle-right');
+            if (siblings.length > 0) {
+                var anyFloating = false;
+                $.each(siblings, function(index2, value2) {
+                    if (anyFloating)
+                        return;
+
+                    anyFloating = $(value2).css('float') != 'none';
+                });
+
+                if (anyFloating)
+                    $(value).css("margin-top", "42px");
+            }
+        });
+    }
+
     return {
         init: function() {
             setUpEvents();
@@ -721,6 +742,8 @@ var Jigl = function() {
                     $('.jigl-select').resize();
                 }, 300);
             });
+
+            checkLayoutStyles();
 
             // Trigger events to truncate select inputs
             $('.jigl-select').resize();
@@ -743,11 +766,9 @@ var Jigl = function() {
                 return;
             }
 
-            var inputList = $(formTag).find('.jigl');
-
-            _.each(inputList, function(inputTag) {
+            $.each($(formTag).find('.jigl'), function(index, value) {
                 // Select the correct tag to trigger event
-                var inputObj = $(inputTag);
+                var inputObj = $(value);
                 if (!inputObj.hasClass('jigl-select') && !inputObj.hasClass('jigl-range')) {
                     inputObj = inputObj.find('.jigl-field');
                 }
