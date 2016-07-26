@@ -97,7 +97,7 @@
 }
 
 .jigl-top-right.jigl-3 {
-    width: 33.34%;
+    width: 33.339%;
 }
 
 .jigl-middle-left {
@@ -120,7 +120,7 @@
 }
 
 .jigl-middle-right.jigl-3 {
-    width: 33.34%;
+    width: 33.339%;
 }
 
 .jigl-bottom-left {
@@ -144,7 +144,7 @@
 }
 
 .jigl-bottom-right.jigl-3 {
-    width: 33.34%;
+    width: 33.339%;
 }
 
 .jigl-label {
@@ -228,6 +228,7 @@
 @import 'color';
 
 @import 'text';
+@import 'autocomplete';
 @import 'select';
 @import 'range';
 @import 'textarea';
