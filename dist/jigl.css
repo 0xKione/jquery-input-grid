@@ -92,7 +92,11 @@
 .jigl-middle-right {
   border-top: none;
   border-bottom: 1px dotted gray;
-  border-left: none; }
+  border-left: none;
+  float: none;
+  position: relative;
+  overflow: hidden;
+  height: 100%; }
 
 .jigl-bottom-left {
   border-top: none;

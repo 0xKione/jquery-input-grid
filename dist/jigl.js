@@ -63,6 +63,7 @@ var Jigl = function() {
     var _rangeMaxOrigVal = -1;
     var _resizeTimerId;
     var _resetSelector = false;
+    var _dateResetSelector = false;
 
     // Private Functions
     var showSelect = function(containerParentTag) {
@@ -568,7 +569,34 @@ var Jigl = function() {
 
         });
 
-        /* Set up events for options in select/range dropdowns */
+        /* Set up events for date inputs */
+        $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
+            event.preventDefault();
+
+            var parentTag = $(this).parents('.jigl');
+
+            if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
+                $(parentTag).css('overflow', 'initial');
+                $(parentTag).css('float', 'right');
+                $(parentTag).css('z-index', '1000');
+                _dateResetSelector = true;
+            }
+        });
+
+        $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
+            event.preventDefault();
+
+            if (_dateResetSelector) {
+                var parentTag = $(this).parents('.jigl');
+
+                $(parentTag).css('overflow', '');
+                $(parentTag).css('float', '');
+                $(parentTag).css('z-index', '');
+                _dateResetSelector = false;
+            }
+        });
+
+        /* Set up events for options in select/range/autocomplete dropdowns */
         $(parentTagSelector).find('.jigl-option').on('mouseover', function(event) {
             // Remove selection from other classes if they have it
             $(this).parent().find('.jigl-option-selected').removeClass('jigl-option-selected');
@@ -822,21 +850,14 @@ var Jigl = function() {
 
     var checkLayoutStyles = function() {
         // Check bottom container styles
-        var bottomContainers = $('.jigl-bottom, .jigl-bottom-left, .jigl-bottom-center, .jigl-bottom-right');
+        var fullContainers = $('.jigl-1');
 
-        $.each(bottomContainers, function(index, value) {
-            var siblings = $(value).siblings('.jigl-middle, .jigl-middle-left, .jigl-middle-center, .jigl-middle-right');
-            if (siblings.length > 0) {
-                var anyFloating = false;
-                $.each(siblings, function(index2, value2) {
-                    if (anyFloating)
-                        return;
-
-                    anyFloating = $(value2).css('float') != 'none';
-                });
-
-                if (anyFloating)
-                    $(value).css('margin-top', "42px");
+        $.each(fullContainers, function(index, value) {
+            var sibling = $(value).prev();
+            if (sibling.length > 0) {
+                if (sibling.css('float') != 'none') {
+                    $(value).css('margin-top', sibling.outerHeight()); 
+                }
             }
         });
     }
