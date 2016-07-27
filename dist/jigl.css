@@ -78,9 +78,6 @@
   overflow: hidden;
   height: 100%; }
 
-.jigl-top-right.jigl-3 {
-  width: 33.339%; }
-
 .jigl-middle-left {
   border-top: none;
   border-right: 1px dotted gray;
@@ -96,9 +93,6 @@
   border-top: none;
   border-bottom: 1px dotted gray;
   border-left: none; }
-
-.jigl-middle-right.jigl-3 {
-  width: 33.339%; }
 
 .jigl-bottom-left {
   border-top: none;
@@ -116,9 +110,6 @@
   position: relative;
   overflow: hidden;
   height: 100%; }
-
-.jigl-bottom-right.jigl-3 {
-  width: 33.339%; }
 
 .jigl-label {
   padding-left: 10px;
