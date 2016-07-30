@@ -63,7 +63,8 @@ var Jigl = function() {
     var _rangeMaxOrigVal = -1;
     var _resizeTimerId;
     var _resetSelector = false;
-    var _dateResetSelector = false;
+    var _invalidateCounter = 0;
+    //var _dateResetSelector = false;
 
     // Private Functions
     var showSelect = function(containerParentTag) {
@@ -223,13 +224,19 @@ var Jigl = function() {
             }
 
             inputTag.removeClass('jigl-hover');
+
+            if (inputTag.hasClass('jigl-invalid'))
+                inputTag.removeClass('jigl-invalid');
             
             if (!inputTag.hasClass('jigl-disabled'))
                 inputTag.addClass('jigl-focus');
+
+            markValidated(inputTag);
         });
 
-        $(parentTagSelector).find('.jigl-field, .jigl-select, .jigl-range').on('keyup', function(event) {
+        $(parentTagSelector).find('.jigl-field, .jigl-select, .jigl-range').on('keyup', function(event, data) {
             event.preventDefault();
+
 
             var inputTag = fieldTag = [];
             var isRangeInput = false;
@@ -248,29 +255,25 @@ var Jigl = function() {
             var infoTag = inputTag.find('.jigl-info');
 
             if (infoTag.length > 0 && !inputTag.hasClass('jigl-no-valid')) {
-                if (fieldTagValue != "") {
-                    var inputOK = false;
+                var inputOK = false;
 
-                    if (inputTag.data().validate) {
-                        inputOK = inputTag.data().validate(fieldTagValue);
-                        inputTag.data().valid = inputOK;
-                    } else {
-                        inputOK = fieldTagValue != "" || (isRangeInput && fieldTagValue != null);
-                        inputTag.data().valid = inputOK;
-                    }
-
-                    if (inputOK) {
-                        infoTag.removeClass('jigl-error');
-                        infoTag.addClass('jigl-okay');
-                        markValidated(inputTag);
-                    } else {
-                        infoTag.removeClass('jigl-okay');
-                        infoTag.addClass('jigl-error');
-                        markValidated(inputTag);
-                    }
+                if (inputTag.data().validate) {
+                    inputOK = inputTag.data().validate(fieldTagValue);
+                    inputTag.data().valid = inputOK;
                 } else {
-                    inputTag.data().valid = false;
-                    infoTag.html("Required");
+                    inputOK = fieldTagValue != "" || (isRangeInput && fieldTagValue != null);
+                    inputTag.data().valid = inputOK;
+                }
+
+                if (inputOK) {
+                    infoTag.removeClass('jigl-error');
+                    infoTag.addClass('jigl-okay');
+                    markValidated(inputTag);
+                } else {
+                    var markInvald = data && data.markInvalid;
+                    infoTag.removeClass('jigl-okay');
+                    infoTag.addClass('jigl-error');
+                    markValidated(inputTag, markInvald);
                 }
             } else {
                 inputTag.data().valid = true;
@@ -316,7 +319,9 @@ var Jigl = function() {
         });
 
         $(parentTagSelector).find('.jigl-autocomplete .jigl-field').on('blur', function(event) {
-            hideAutocomplete($(this).parents('.jigl-autocomplete'));
+            if ($(this).parents('.jigl').find('.jigl-select-dropdown').is(':visible')) {
+                hideAutocomplete($(this).parents('.jigl'));
+            }
         });
 
         $(parentTagSelector).find('.jigl-autocomplete').on('keydown', function(event) {
@@ -449,12 +454,12 @@ var Jigl = function() {
             if (keyCode == 13) {
                 event.preventDefault();
                 if (currentChoiceTag.length != 0) {
-                    fieldTag.html(currentChoiceTag.text());
                     if (isSelect) {
+                        fieldTag.html(currentChoiceTag.text());
                         inputTag.attr('value', currentChoiceTag.attr('data-value'));
                         inputTag.val(currentChoiceTag.attr('data-value'));
                     } else {
-                        inputTag.val(currentChoiceTag.text());
+                        $(this).data().val(currentChoiceTag.text());
                     }
 
                     currentChoiceTag.removeClass('jigl-option-selected');
@@ -570,31 +575,31 @@ var Jigl = function() {
         });
 
         /* Set up events for date inputs */
-        $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
-            event.preventDefault();
+        // $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
+        //     event.preventDefault();
 
-            var parentTag = $(this).parents('.jigl');
+        //     var parentTag = $(this).parents('.jigl');
 
-            if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
-                $(parentTag).css('overflow', 'initial');
-                $(parentTag).css('float', 'right');
-                $(parentTag).css('z-index', '1000');
-                _dateResetSelector = true;
-            }
-        });
+        //     if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
+        //         $(parentTag).css('overflow', 'initial');
+        //         $(parentTag).css('float', 'right');
+        //         $(parentTag).css('z-index', '1000');
+        //         _dateResetSelector = true;
+        //     }
+        // });
 
-        $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
-            event.preventDefault();
+        // $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
+        //     event.preventDefault();
 
-            if (_dateResetSelector) {
-                var parentTag = $(this).parents('.jigl');
+        //     if (_dateResetSelector) {
+        //         var parentTag = $(this).parents('.jigl');
 
-                $(parentTag).css('overflow', '');
-                $(parentTag).css('float', '');
-                $(parentTag).css('z-index', '');
-                _dateResetSelector = false;
-            }
-        });
+        //         $(parentTag).css('overflow', '');
+        //         $(parentTag).css('float', '');
+        //         $(parentTag).css('z-index', '');
+        //         _dateResetSelector = false;
+        //     }
+        // });
 
         /* Set up events for options in select/range/autocomplete dropdowns */
         $(parentTagSelector).find('.jigl-option').on('mouseover', function(event) {
@@ -621,9 +626,9 @@ var Jigl = function() {
                     $(this).parents('.jigl-container').find('input').attr('value', $(this).attr('data-value'));
                     $(this).parents('.jigl-container').find('input').val($(this).attr('data-value'));
                     $(this).parents('.jigl-container').find('.jigl-field').attr('title', $(this).text());
-                    $(this).removeClass('jigl-option-selected');
                     $(this).parents('.jigl-select').resize();
                     $(this).parents('.jigl-select').find('input').change();
+                    $(this).removeClass('jigl-option-selected');
                 }
 
                 hideSelect($(this).parents('.jigl-select'), true);
@@ -635,10 +640,10 @@ var Jigl = function() {
                 }
             } else if ($(this).parents('.jigl-autocomplete').length > 0) {
                 if ($(this).hasClass('jigl-option-selected')) {
-                    $(this).parents('.jigl-autocomplete').find('input').val($(this).text());
-                    $(this).removeClass('jigl-option-selected');
+                    $(this).parents('.jigl-autocomplete').data().val($(this).text());
                     $(this).parents('.jigl-autocomplete').resize();
                     $(this).parents('.jigl-autocomplete').find('input').change();
+                    $(this).removeClass('jigl-option-selected');
                 }
 
                 hideAutocomplete($(this).parents('.jigl-autocomplete'));
@@ -696,7 +701,7 @@ var Jigl = function() {
         $(parentTagSelector).find('.jigl').get().forEach(function(value, index, array) {
             $(value).data({
                 "val": function(newVal) {
-                    if (!newVal) {      // Getter
+                    if (newVal == null) {      // Getter
                         if ($(value).hasClass('jigl-select')) {
                             return $(value).find('.jigl-container > input').val();
                         } else if ($(value).hasClass('jigl-range')) {
@@ -726,7 +731,7 @@ var Jigl = function() {
                     }
                 },
                 "text": function(newText) {
-                    if (!newText) {     // Getter
+                    if (newText == null) {     // Getter
                         if ($(value).hasClass('jigl-select')) {
                             return $(value).find('.jigl-container > .jigl-field > div').text();
                         } else if ($(value).hasClass('jigl-range')) {
@@ -815,14 +820,13 @@ var Jigl = function() {
         });
     };
         
-    var markValidated = function(element) {
+    var markValidated = function(element, markInvalid) {
         var infoTag = $(element).find('.jigl-info');
 
-        if (!infoTag)
+        if (!infoTag || $(element).hasClass('jigl-no-valid'))
             return;
 
         var minifyInfo = infoTag.hasClass('info-minify');
-
 
         if (infoTag.hasClass('jigl-okay')) {
             if (minifyInfo) {
@@ -830,21 +834,23 @@ var Jigl = function() {
             } else {
                 infoTag.html("OK");
             }
+            $(element).removeClass('jigl-invalid');
         } else if (infoTag.hasClass('jigl-error')) {
             if (minifyInfo) {
                 infoTag.html("<i class='fa fa-times'></i>");
             } else {
                 infoTag.html("Invalid");
             }
-        } else {
-            if (infoTag.hasClass('jigl-no-valid'))
-                return;
 
+            if (markInvalid)
+                $(element).addClass('jigl-invalid');
+        } else {
             if (minifyInfo) {
                 infoTag.html("<i class='fa fa-exclamation'></i>");
             } else {
                 infoTag.html("Required");
             }
+            $(element).removeClass('jigl-invalid');
         }
     };
 
@@ -900,13 +906,8 @@ var Jigl = function() {
             $('.jigl-select').resize();
         },
 
-        validateForm: function(formTag) {
-            if (!$(formTag).is('form')) {
-                console.log("Parameter is not a 'form' tag");
-                return;
-            }
-
-            $.each($(formTag).find('.jigl'), function(index, value) {
+        validateContainer: function(containerTag) {
+            $.each($(containerTag).find('.jigl'), function(index, value) {
                 // Select the correct tag to trigger event
                 var inputObj = $(value);
                 if (!inputObj.hasClass('jigl-select') && !inputObj.hasClass('jigl-range')) {
@@ -914,8 +915,34 @@ var Jigl = function() {
                 }
 
                 // Trigger the keyup event to validate
-                inputObj.trigger('keyup');
+                inputObj.trigger('keyup', { markInvalid: true });
             });
+        },
+
+        isContainerValid: function(containerTag) {
+            if (containerTag.length == 0)
+                return true;
+
+            var containers = $(containerTag).find('.jigl');
+            if (containers.length > 0) {
+                var valid = true;
+                $.each(containers, function(index, value) {
+                    if (!valid)
+                        return;
+
+                    if (!$(value).data().valid) {
+                        valid = false;
+                    }
+                });
+
+                return valid;
+            } else {
+                if ($(containerTag).hasClass('jigl')) {
+                    return $(containerTag).data().valid;
+                }
+
+                return false;
+            }
         },
 
         resetInputs: function(parentTag) {

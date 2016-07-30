@@ -1,5 +1,9 @@
 /* Textarea Styles */
 .jigl-textarea {
+    .jigl-container {
+        padding-bottom: 5px;
+    }
+    
     textarea {
         height: 100%;
         overflow-y: auto;

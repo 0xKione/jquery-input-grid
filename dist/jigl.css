@@ -13,6 +13,9 @@
   position: relative;
   min-height: 1px; }
 
+.jigl-rounded {
+  border-radius: 5px; }
+
 .jigl-focus {
   border-width: 1px;
   border-style: solid;
@@ -20,8 +23,7 @@
 
 .jigl-invalid {
   border-width: 1px;
-  border-style: solid;
-  z-index: 1001; }
+  border-style: solid; }
 
 .jigl-hover {
   border-width: 1px;
@@ -53,22 +55,41 @@
 
 .jigl-top {
   border-bottom: 1px dotted gray; }
+  .jigl-top.jigl-rounded {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0; }
 
 .jigl-middle {
   border-top: none;
   border-bottom: 1px dotted gray; }
+  .jigl-middle.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-bottom {
   border-top: none; }
+  .jigl-bottom.jigl-rounded {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 5px; }
 
 .jigl-top-left {
   border-right: 1px dotted gray;
   border-bottom: 1px dotted gray; }
+  .jigl-top-left.jigl-rounded {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
 
 .jigl-top-center {
   border-right: 1px dotted gray;
   border-bottom: 1px dotted gray;
   border-left: none; }
+  .jigl-top-center.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-top-right {
   border-bottom: 1px dotted gray;
@@ -77,17 +98,26 @@
   position: relative;
   overflow: hidden;
   height: 100%; }
+  .jigl-top-right.jigl-rounded {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0; }
 
 .jigl-middle-left {
   border-top: none;
   border-right: 1px dotted gray;
   border-bottom: 1px dotted gray; }
+  .jigl-middle-left.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-middle-center {
   border-top: none;
   border-right: 1px dotted gray;
   border-bottom: 1px dotted gray;
   border-left: none; }
+  .jigl-middle-center.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-middle-right {
   border-top: none;
@@ -97,15 +127,24 @@
   position: relative;
   overflow: hidden;
   height: 100%; }
+  .jigl-middle-right.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-bottom-left {
   border-top: none;
   border-right: 1px dotted gray; }
+  .jigl-bottom-left.jigl-rounded {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
 
 .jigl-bottom-center {
   border-top: none;
   border-right: 1px dotted gray;
   border-left: none; }
+  .jigl-bottom-center.jigl-rounded {
+    border-radius: 0; }
 
 .jigl-bottom-right {
   border-top: none;
@@ -114,6 +153,11 @@
   position: relative;
   overflow: hidden;
   height: 100%; }
+  .jigl-bottom-right.jigl-rounded {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 5px; }
 
 .jigl-label {
   padding-left: 10px;
@@ -405,6 +449,9 @@
     right: -100%; } }
 
 /* Textarea Styles */
+.jigl-textarea .jigl-container {
+  padding-bottom: 5px; }
+
 .jigl-textarea textarea {
   height: 100%;
   overflow-y: auto;

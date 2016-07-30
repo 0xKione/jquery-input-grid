@@ -16,6 +16,10 @@
     min-height: 1px;
 }
 
+.jigl-rounded {
+    border-radius: 5px;
+}
+
 .jigl-focus {
     border-width: 1px;
     border-style: solid;
@@ -25,7 +29,6 @@
 .jigl-invalid {
     border-width: 1px;
     border-style: solid;
-    z-index: 1001;
 }
 
 .jigl-hover {
@@ -64,30 +67,66 @@
 }
 
 .jigl-top {
+    &.jigl-rounded {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 0;
+    }
+
     border-bottom: 1px dotted gray;
 }
 
 .jigl-middle {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
     border-top: none;
     border-bottom: 1px dotted gray;
 }
 
 .jigl-bottom {
+    &.jigl-rounded {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 5px;
+    }
+
     border-top: none;
 }
 
 .jigl-top-left {
+    &.jigl-rounded {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
 }
 
 .jigl-top-center {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
     border-left: none;
 }
 
 .jigl-top-right {
+    &.jigl-rounded {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 0;
+    }
+
     border-bottom: 1px dotted gray;
     border-left: none;
     float: none;
@@ -97,12 +136,20 @@
 }
 
 .jigl-middle-left {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
     border-top: none;
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
 }
 
 .jigl-middle-center {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
     border-top: none;
     border-right: 1px dotted gray;
     border-bottom: 1px dotted gray;
@@ -110,6 +157,10 @@
 }
 
 .jigl-middle-right {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
     border-top: none;
     border-bottom: 1px dotted gray;
     border-left: none;
@@ -120,17 +171,35 @@
 }
 
 .jigl-bottom-left {
+    &.jigl-rounded {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
     border-top: none;
     border-right: 1px dotted gray;
 }
 
 .jigl-bottom-center {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+    
     border-top: none;
     border-right: 1px dotted gray;
     border-left: none;
 }
 
 .jigl-bottom-right {
+    &.jigl-rounded {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 5px;
+    }
+
     border-top: none;
     border-left: none;
     float: none;
