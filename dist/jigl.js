@@ -1,5 +1,5 @@
 /*!
- * jigl v1.2.0 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.3 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -575,31 +575,31 @@ var Jigl = function() {
         });
 
         /* Set up events for date inputs */
-        // $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
-        //     event.preventDefault();
+        $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
+            event.preventDefault();
 
-        //     var parentTag = $(this).parents('.jigl');
+            var parentTag = $(this).parents('.jigl');
 
-        //     if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
-        //         $(parentTag).css('overflow', 'initial');
-        //         $(parentTag).css('float', 'right');
-        //         $(parentTag).css('z-index', '1000');
-        //         _dateResetSelector = true;
-        //     }
-        // });
+            if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
+                $(parentTag).css('overflow', 'initial');
+                $(parentTag).css('float', 'right');
+                $(parentTag).css('z-index', '1000');
+                _dateResetSelector = true;
+            }
+        });
 
-        // $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
-        //     event.preventDefault();
+        $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
+            event.preventDefault();
 
-        //     if (_dateResetSelector) {
-        //         var parentTag = $(this).parents('.jigl');
+            if (_dateResetSelector) {
+                var parentTag = $(this).parents('.jigl');
 
-        //         $(parentTag).css('overflow', '');
-        //         $(parentTag).css('float', '');
-        //         $(parentTag).css('z-index', '');
-        //         _dateResetSelector = false;
-        //     }
-        // });
+                $(parentTag).css('overflow', '');
+                $(parentTag).css('float', '');
+                $(parentTag).css('z-index', '');
+                _dateResetSelector = false;
+            }
+        });
 
         /* Set up events for options in select/range/autocomplete dropdowns */
         $(parentTagSelector).find('.jigl-option').on('mouseover', function(event) {
