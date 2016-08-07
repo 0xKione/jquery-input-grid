@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.4 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.5 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -64,7 +64,7 @@ var Jigl = function() {
     var _resizeTimerId;
     var _resetSelector = false;
     var _invalidateCounter = 0;
-    //var _dateResetSelector = false;
+    var _dateResetSelector = false;
 
     // Private Functions
     var showSelect = function(containerParentTag) {

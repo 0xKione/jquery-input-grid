@@ -75,6 +75,28 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 5px; }
 
+.jigl-left {
+  border-right: 1px dotted gray; }
+  .jigl-left.jigl-rounded {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+
+.jigl-center {
+  border-right: 1px dotted gray;
+  border-left: 0; }
+  .jigl-center.jigl-rounded {
+    border-radius: 0; }
+
+.jigl-right {
+  border-left: 0; }
+  .jigl-right.jigl-rounded {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; }
+
 .jigl-top-left {
   border-right: 1px dotted gray;
   border-bottom: 1px dotted gray; }

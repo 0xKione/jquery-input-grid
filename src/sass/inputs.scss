@@ -97,6 +97,37 @@
     border-top: none;
 }
 
+.jigl-left {
+    &.jigl-rounded {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    border-right: 1px dotted gray;
+}
+
+.jigl-center {
+    &.jigl-rounded {
+        border-radius: 0;
+    }
+
+    border-right: 1px dotted gray;
+    border-left: 0;
+}
+
+.jigl-right {
+    &.jigl-rounded {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    border-left: 0;
+}
+
 .jigl-top-left {
     &.jigl-rounded {
         border-top-left-radius: 5px;
