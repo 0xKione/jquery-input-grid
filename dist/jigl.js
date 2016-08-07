@@ -129,6 +129,22 @@ var Jigl = function() {
         if (dropdownTag.height() >= dropdownTag.css('max-height').replace(/[^-\d\.]/g, '')) {
             dropdownTag.width(dropdownTag.width() + 20);
         }
+
+        var value = $(containerParentTag).data().text().trim();
+        var visibleOptions = 0;
+
+        // Set visible
+        dropdownTag.find('.jigl-option').each(function(index) {
+            $(this).hide();
+            if ($(this).text().trim().toLowerCase().startsWith(value)) {
+                $(this).show();
+                ++visibleOptions;
+            }
+        });
+
+        if (visibleOptions == 0)
+            return;
+        
         dropdownTag.show();
 
         if ($(containerParentTag).hasClass('jigl-top-right') || $(containerParentTag).hasClass('jigl-middle-right') || $(containerParentTag).hasClass('jigl-bottom-right')) {
@@ -188,6 +204,8 @@ var Jigl = function() {
     };
 
     var setUpEvents = function(parentTagSelector) {
+        var overAutocompleteDropdown = false;
+
         if (!parentTagSelector) {
             parentTagSelector = 'body';
         }
@@ -232,6 +250,11 @@ var Jigl = function() {
                 inputTag.addClass('jigl-focus');
 
             markValidated(inputTag);
+
+            if ($(this).parents('.jigl').hasClass('jigl-autocomplete')) {
+                if (!overAutocompleteDropdown)
+                    showAutocomplete($(this).parents('.jigl'));
+            }
         });
 
         $(parentTagSelector).find('.jigl-field, .jigl-select, .jigl-range').on('keyup', function(event, data) {
@@ -318,8 +341,9 @@ var Jigl = function() {
         });
 
         $(parentTagSelector).find('.jigl-autocomplete .jigl-field').on('blur', function(event) {
-            if ($(this).parents('.jigl').find('.jigl-select-dropdown').is(':visible')) {
-                hideAutocomplete($(this).parents('.jigl'));
+            if ($(this).parents('.jigl').find('.jigl-autocomplete-dropdown').is(':visible')) {
+                if (!overAutocompleteDropdown)
+                    hideAutocomplete($(this).parents('.jigl'));
             }
         });
 
@@ -601,6 +625,14 @@ var Jigl = function() {
         });
 
         /* Set up events for options in select/range/autocomplete dropdowns */
+        $(parentTagSelector).find('.jigl-autocomplete-dropdown').on('mouseenter', function(event) {
+            overAutocompleteDropdown = true;
+        });
+
+        $(parentTagSelector).find('.jigl-autocomplete-dropdown').on('mouseleave', function(event) {
+            overAutocompleteDropdown = false;
+        });
+
         $(parentTagSelector).find('.jigl-option').on('mouseover', function(event) {
             // Remove selection from other classes if they have it
             $(this).parent().find('.jigl-option-selected').removeClass('jigl-option-selected');
