@@ -938,9 +938,9 @@ var Jigl = function() {
         },
 
         validateContainer: function(containerTag) {
-            $.each($(containerTag).find('.jigl'), function(index, value) {
+            $(containerTag).find('.jigl').each(function(index) {
                 // Select the correct tag to trigger event
-                var inputObj = $(value);
+                var inputObj = $(this);
                 if (!inputObj.hasClass('jigl-select') && !inputObj.hasClass('jigl-range')) {
                     inputObj = inputObj.find('.jigl-field');
                 }
@@ -957,11 +957,11 @@ var Jigl = function() {
             var containers = $(containerTag).find('.jigl');
             if (containers.length > 0) {
                 var valid = true;
-                $.each(containers, function(index, value) {
+                containers.each(function(index) {
                     if (!valid)
                         return;
 
-                    if (!$(value).data().valid) {
+                    if (!$(this).data().valid) {
                         valid = false;
                     }
                 });
