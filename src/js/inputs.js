@@ -646,12 +646,17 @@ var Jigl = function() {
             } else {
                 // TODO: Remove?
             }
+
+            // Trigger click to fix iOS double click issues
+            if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+                $(this).click();
+            }
         });
 
         $(parentTagSelector).find('.jigl-option').on('click', function(event) {
             event.stopPropagation();
 
-            // If the option belongs to a select input or a range input
+            // Check the type of input the option belongs to
             if ($(this).parents('.jigl-select').length > 0) {
                 if ($(this).hasClass('jigl-option-selected')) {
                     $(this).parents('.jigl-container').find('input').attr('value', $(this).attr('data-value'));
@@ -659,7 +664,6 @@ var Jigl = function() {
                     $(this).parents('.jigl-container').find('.jigl-field').attr('title', $(this).text());
                     $(this).parents('.jigl-select').resize();
                     $(this).parents('.jigl-select').find('input').change();
-                    $(this).removeClass('jigl-option-selected');
                 }
 
                 hideSelect($(this).parents('.jigl-select'), true);
