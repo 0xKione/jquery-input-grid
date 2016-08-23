@@ -243,6 +243,7 @@
     padding-left: 10px;
     font-size: 11px;
     text-transform: uppercase;
+    height: 15px;
 }
 
 .jigl-info {
@@ -283,6 +284,10 @@
     outline: 0;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.jigl-rounded .jigl-field {
+    width: 98%;
 }
 
 .jigl-dropdown-arrow {
@@ -489,6 +494,19 @@
         border-right: 1px solid #666;
         border-bottom: 1px solid #666;
         border-left: 1px solid #666;
+    }
+
+    .jigl-label {
+        font-size: 9px;
+        padding-top: 2px;
+    }
+
+    .jigl-info {
+        font-size: 7px;
+    }
+
+    .jigl-field {
+        font-size: 12px;
     }
 }
 
