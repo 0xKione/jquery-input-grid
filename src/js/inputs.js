@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.8 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.9 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -930,8 +930,8 @@ var Jigl = function() {
             $('.jigl-select').resize();
         },
 
-        initializeContainer: function(parentId) {
-            var parentSelector = "#" + parentId;
+        initializeContainer: function(parent, isContainer) {
+            var parentSelector = isContainer ? parent : "#" + parent;
 
             setUpEvents(parentSelector);
             setUpValidation(parentSelector);
@@ -952,6 +952,15 @@ var Jigl = function() {
                 // Trigger the keyup event to validate
                 inputObj.trigger('keyup', { markInvalid: true });
             });
+        },
+
+        createClone: function(originalContainer, copyEvents, copyChildEvents) {
+            var newContainer = originalContainer.clone(copyEvents, copyChildEvents)
+
+            this.initializeContainer(newContainer, true);
+            this.clearContainer(newContainer)
+
+            return newContainer;
         },
 
         isContainerValid: function(containerTag) {
@@ -993,7 +1002,15 @@ var Jigl = function() {
                     markValidated(value);
                 }
 
-                $(value).find('.jigl-field').val("");        // Clear all the input field values
+                // Text inputs
+                $(value).find('input').val("");
+                // Textarea inputs
+                $(value).find('textarea').val("");
+
+                if ($(value).hasClass('.jigl-select')) {
+                    $(value).find('.jigl-field > div').val("");
+                    $(value).find('input').val("-1");
+                }
             });
         }
     }
