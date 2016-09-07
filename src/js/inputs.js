@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.9 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.10 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -815,6 +815,13 @@ var Jigl = function() {
                         $(value).find('.jigl-field').val(newVal);
                         $(value).find('.jigl-field').attr('value', newVal);
                     }
+                },
+                "getInputName": function() {
+                    if ($(value).hasClass('jigl-select')) {
+                        return $(value).find('.jigl-container > input').attr('name');
+                    } else {
+                        return $(value).find('.jigl-field').attr('name');
+                    }
                 }
             });
         });
@@ -958,7 +965,7 @@ var Jigl = function() {
             var newContainer = originalContainer.clone(copyEvents, copyChildEvents)
 
             this.initializeContainer(newContainer, true);
-            this.clearContainer(newContainer)
+            this.resetInputs(newContainer)
 
             return newContainer;
         },
