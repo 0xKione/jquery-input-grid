@@ -224,12 +224,6 @@
 .jigl-rounded .jigl-field {
   width: 98%; }
 
-.jigl-dropdown-arrow {
-  position: absolute;
-  right: 5px;
-  bottom: 8px;
-  font-size: 16px; }
-
 .jigl-option {
   font-size: 16px;
   white-space: nowrap; }
@@ -361,11 +355,13 @@
       border-bottom-right-radius: 5px; }
   .jigl-label {
     font-size: 9px;
-    padding-top: 2px; }
+    padding-top: 2px;
+    height: 13px; }
   .jigl-info {
     font-size: 7px; }
   .jigl-field {
-    font-size: 12px; } }
+    font-size: 12px;
+    height: 20px; } }
 
 /* Color Styles */
 .jigl {
@@ -507,6 +503,12 @@
     .jigl-select .jigl-container > input {
       display: none; }
 
+.jigl-dropdown-arrow {
+  position: absolute;
+  right: 5px;
+  bottom: 8px;
+  font-size: 16px; }
+
 .jigl-select-dropdown {
   position: absolute;
   z-index: 1000;
@@ -534,6 +536,8 @@
     display: none; }
 
 @media (max-width: 500px) {
+  .jigl-dropdown-arrow {
+    font-size: 12px; }
   .jigl-select-dropdown {
     max-height: 200px; } }
 

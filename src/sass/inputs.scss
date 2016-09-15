@@ -290,13 +290,6 @@
     width: 98%;
 }
 
-.jigl-dropdown-arrow {
-    position: absolute;
-    right: 5px;
-    bottom: 8px;
-    font-size: 16px;
-}
-
 .jigl-option {
     font-size: 16px;
     white-space: nowrap;
@@ -499,6 +492,7 @@
     .jigl-label {
         font-size: 9px;
         padding-top: 2px;
+        height: 13px;
     }
 
     .jigl-info {
@@ -507,6 +501,7 @@
 
     .jigl-field {
         font-size: 12px;
+        height: 20px;
     }
 }
 
