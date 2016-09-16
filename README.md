@@ -7,7 +7,7 @@ JIGL is a library of customizable form-compliant input fields and groups based o
 - A visually appealing style with built-in labels
 
 ## Latest Version
-1.3.10
+1.3.11
 
 ## Downloading Library
 This library is available using Bower. To use it in your project perform the following steps
@@ -34,8 +34,7 @@ $ git clone https://github.com/0xKione/jquery-input-grid.git
 $ cd path/to/repo
 $ npm install
 $ bower install
-$ gulp
-$ gulp watch
+$ gulp dev
 ```
 
 To generate a release build

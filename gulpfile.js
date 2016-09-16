@@ -5,11 +5,13 @@ var gulp = require('gulp');
 var assign = Object.assign || require('object.assign')
 var babel = require('gulp-babel');
 var batch = require('gulp-batch');
+var browserSync = require('browser-sync').create();
 var concat = require('gulp-concat');
-var cssmin = require('gulp-minify-css');
+var cssmin = require('gulp-clean-css');
 var del = require('del');
 var jsmin = require('gulp-uglify');
 var lint = require('gulp-eslint');
+var merge = require('merge-stream');
 var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var sass = require('gulp-sass');
@@ -75,10 +77,17 @@ gulp.task('build', function() {
 });
 
 gulp.task('sass', function() {
-  return gulp.src("./src/sass/*.scss")
+  var jigl = gulp.src("./src/sass/*.scss")
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('jigl.css'))
     .pipe(gulp.dest('./dist/'));
+
+  var demo = gulp.src("./src/sass/demo/*.scss")
+    .pipe(sass().on('error', sass.logError))
+    .pipe(rename('page.css'))
+    .pipe(gulp.dest('./dist/demo/'));
+
+  return merge(jigl, demo);
 });
 
 gulp.task('minify-js', function() {
@@ -95,10 +104,23 @@ gulp.task('minify-css', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('watch', function() {
-  watch(['index.html', 'src/js/*.js', 'src/sass/*.scss'], batch(function(events, done) {
-    gulp.start('default', done);
-  }));
+gulp.task('reload', ['default'], function(done) {
+  browserSync.reload();
+  done();
+});
+
+gulp.task('dev', function() {
+  gulp.start('default');  // Run the default Gulp task
+
+  // Deploy a Browser Sync server
+  browserSync.init({
+    server: {
+      baseDir: './'
+    }
+  });
+
+  // Watch for changes
+  gulp.watch(['index.html', 'src/js/*.js', 'src/sass/*.scss', 'src/sass/demo/*.scss'], ['reload']);
 });
 
 gulp.task('default', function(callback) {
