@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.10 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.11 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -698,7 +698,7 @@ var Jigl = function() {
         $(parentTagSelector).find('.jigl').data({ "valid": false });
 
         // Email inputs must have the form "user@domain.extension"
-        $(parentTagSelector).find('.jigl-email-input').data({
+        $(parentTagSelector).find('.jigl-email').data({
             "validate": function(input) {
                 var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
                 return re.test(input);
@@ -706,7 +706,7 @@ var Jigl = function() {
         });
 
         // Passwords must be at least 7 characters, have one digit, have one lowercase letter, and one uppercase letter
-        $(parentTagSelector).find('.jigl-password-input').data({
+        $(parentTagSelector).find('.jigl-password').data({
             "validate": function(input) {
                 //(?=.*\d)                //should contain at least one digit
                 //(?=.*[a-z])             //should contain at least one lower case
@@ -937,12 +937,12 @@ var Jigl = function() {
             $('.jigl-select').resize();
         },
 
-        initializeContainer: function(parent, isContainer) {
-            var parentSelector = isContainer ? parent : "#" + parent;
+        initializeContainer: function(container, isContainer) {
+            var containerSelector = isContainer ? container : "#" + container;
 
-            setUpEvents(parentSelector);
-            setUpValidation(parentSelector);
-            setUpFunctions(parentSelector);
+            setUpEvents(containerSelector);
+            setUpValidation(containerSelector);
+            setUpFunctions(containerSelector);
 
             // Trigger events to truncate select inputs
             $('.jigl-select').resize();
@@ -959,15 +959,6 @@ var Jigl = function() {
                 // Trigger the keyup event to validate
                 inputObj.trigger('keyup', { markInvalid: true });
             });
-        },
-
-        createClone: function(originalContainer, copyEvents, copyChildEvents) {
-            var newContainer = originalContainer.clone(copyEvents, copyChildEvents)
-
-            this.initializeContainer(newContainer, true);
-            this.resetInputs(newContainer)
-
-            return newContainer;
         },
 
         isContainerValid: function(containerTag) {
@@ -996,7 +987,16 @@ var Jigl = function() {
             }
         },
 
-        resetInputs: function(parentTag) {
+        createClone: function(originalContainerTag, copyDataAndEvents, copyChildDataAndEvents) {
+            var newContainerTag = $(originalContainerTag).clone(copyDataAndEvents, copyChildDataAndEvents)
+
+            this.initializeContainer(newContainerTag, true);
+            this.resetContainer(newContainerTag)
+
+            return newContainerTag;
+        },
+
+        resetContainer: function(containerTag) {
             var inputTags = parentTag.find(".jigl");
 
             // Set all required inputs back to "Required"

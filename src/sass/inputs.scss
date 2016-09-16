@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.10 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.11 (https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -303,6 +303,12 @@
     cursor: pointer;
 }
 
+.jigl-no-valid {
+    .jigl-info {
+        display: none;
+    }
+}
+
 .jigl-disabled {
     .jigl-field {
         cursor: default;
@@ -315,7 +321,7 @@
     cursor: default;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 599px) {
     .jigl-2,
     .jigl-3,
     .jigl-4,

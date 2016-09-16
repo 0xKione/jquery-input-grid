@@ -1,0 +1,139 @@
+/* Overrides */
+.jigl-1 {
+  width: (99 / 1) * 1%;
+}
+
+.jigl-2 {
+  width: (99 / 2) * 1%;
+}
+
+.jigl-3 {
+  width: (99 / 3) * 1%;
+}
+
+.jigl-4 {
+  width: (99 / 4) * 1%;
+}
+
+.jigl-5 {
+  width: (99 / 5) * 1%;
+}
+
+.jigl-6 {
+  width: (99 / 6) * 1%;
+}
+
+@media (max-width: 599px) {
+  .jigl-1,
+  .jigl-2,
+  .jigl-3,
+  .jigl-4,
+  .jigl-5,
+  .jigl-6 {
+      width: 99%;
+      float: none;
+  }
+}
+
+/* Page Styles */
+a {
+  &:hover {
+    color: #444;
+  }
+
+  text-decoration: none;
+  color: #69B;
+}
+
+.demo-header {
+  > div {
+    font-size: 20px;
+  }
+}
+
+.demo-navigation {
+  > ul {
+    > li {
+      > a {
+        font-size: 18px;
+      }
+    }
+    
+    list-style: none;
+  }
+
+  margin-bottom: 40px;
+}
+
+.demo-sections {
+  padding: 10px;
+}
+
+.demo-section {
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  margin-bottom: 15px;
+}
+
+.demo-section-header {
+  font-size: 17px;
+  margin-left: 10px;
+}
+
+.demo-section-navigation {
+  > ul {
+    > li {
+      > a {
+        &:hover {
+          color: #444;
+        }
+
+        text-decoration: none;
+        color: #69B;
+        font-size: 18px;
+      }
+    }
+    
+    list-style: none;
+  }
+
+  margin-left: 5%;
+}
+
+.demo-containers {
+  width: 80%;
+  margin: 0 10%;
+}
+
+.demo-container {
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  > div {
+    margin-bottom: 10px;
+  }
+
+  > code {
+    > div {
+      &:first-of-type {
+        padding-top: 10px;
+      }
+
+      &:last-of-type {
+        padding-bottom: 10px;
+      }
+
+      padding-left: 10px;
+      padding-right: 10px;
+      background: #EEE;
+    }
+
+    background: #EEE;
+    color: #469;
+  }
+
+  margin-bottom: 15px;
+}
