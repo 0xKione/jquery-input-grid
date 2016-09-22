@@ -997,7 +997,7 @@ var Jigl = function() {
         },
 
         resetContainer: function(containerTag) {
-            var inputTags = parentTag.find(".jigl");
+            var inputTags = containerTag.find(".jigl");
 
             // Set all required inputs back to "Required"
             inputTags.get().forEach(function(value, index, array) {
