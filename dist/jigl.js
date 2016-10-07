@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.11 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.12 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -74,13 +74,6 @@ var Jigl = function() {
         }
         dropdownTag.show();
 
-        if ($(containerParentTag).hasClass('jigl-top-right') || $(containerParentTag).hasClass('jigl-middle-right') || $(containerParentTag).hasClass('jigl-bottom-right')) {
-            $(containerParentTag).css('overflow', 'initial');
-            $(containerParentTag).css('float', 'right');
-            $(containerParentTag).css('z-index', '1000');
-            _resetSelector = true;
-        }
-
         $(containerParentTag).find('.jigl-dropdown-arrow > i').removeClass('fa-caret-down').addClass('fa-caret-up');
 
         var inputVal = $(containerParentTag).find('.jigl-field > div').text();
@@ -108,13 +101,6 @@ var Jigl = function() {
             dropdownTag.width(dropdownTag.width() - 20);
         }
         dropdownTag.hide();
-
-        if (_resetSelector) {
-            $(containerParentTag).css('overflow', '');
-            $(containerParentTag).css('float', '');
-            $(containerParentTag).css('z-index', '');
-            _resetSelector = false;
-        }
 
         // Set the input field back to its original value if the user didn't select one
         if (!valueSelected) {
@@ -601,27 +587,13 @@ var Jigl = function() {
         $(parentTagSelector).find('.jigl-date input').on('focus', function(event) {
             event.preventDefault();
 
-            var parentTag = $(this).parents('.jigl');
-
-            if ($(parentTag).hasClass('jigl-top-right') || $(parentTag).hasClass('jigl-middle-right') || $(parentTag).hasClass('jigl-bottom-right')) {
-                $(parentTag).css('overflow', 'initial');
-                $(parentTag).css('float', 'right');
-                $(parentTag).css('z-index', '1000');
-                _dateResetSelector = true;
-            }
+            // TODO: Needed?
         });
 
         $(parentTagSelector).find('.jigl-date input').on('blur', function(event) {
             event.preventDefault();
 
-            if (_dateResetSelector) {
-                var parentTag = $(this).parents('.jigl');
-
-                $(parentTag).css('overflow', '');
-                $(parentTag).css('float', '');
-                $(parentTag).css('z-index', '');
-                _dateResetSelector = false;
-            }
+            // TODO: Needed?
         });
 
         /* Set up events for options in select/range/autocomplete dropdowns */
@@ -904,11 +876,11 @@ var Jigl = function() {
             var sibling = $(value).prev();
             if (sibling.length > 0) {
                 if (sibling.css('float') != 'none') {
-                    $(value).css('margin-top', sibling.outerHeight()); 
+                    $(value).addClass('jigl-margin'); 
                 }
             }
         });
-    }
+    };
 
     // Public Functions
     return {
@@ -930,8 +902,6 @@ var Jigl = function() {
                     $('.jigl-autocomplete').resize();
                 }, 300);
             });
-
-            checkLayoutStyles();
 
             // Trigger events to truncate select inputs
             $('.jigl-select').resize();

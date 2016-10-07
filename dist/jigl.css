@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.11 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.12 (https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -18,8 +18,7 @@
 
 .jigl-focus {
   border-width: 1px;
-  border-style: solid;
-  z-index: 1000; }
+  border-style: solid; }
 
 .jigl-invalid {
   border-width: 1px;
@@ -27,11 +26,11 @@
 
 .jigl-hover {
   border-width: 1px;
-  border-style: solid;
-  z-index: 1000; }
+  border-style: solid; }
 
 .jigl-1 {
-  width: 100%; }
+  width: 100%;
+  clear: both; }
 
 .jigl-2 {
   width: 50%;
@@ -116,9 +115,6 @@
 .jigl-top-right {
   border-bottom: 1px dotted gray;
   border-left: none;
-  float: none;
-  position: relative;
-  overflow: hidden;
   height: 100%; }
   .jigl-top-right.jigl-rounded {
     border-top-left-radius: 0;
@@ -145,9 +141,6 @@
   border-top: none;
   border-bottom: 1px dotted gray;
   border-left: none;
-  float: none;
-  position: relative;
-  overflow: hidden;
   height: 100%; }
   .jigl-middle-right.jigl-rounded {
     border-radius: 0; }
@@ -171,9 +164,6 @@
 .jigl-bottom-right {
   border-top: none;
   border-left: none;
-  float: none;
-  position: relative;
-  overflow: hidden;
   height: 100%; }
   .jigl-bottom-right.jigl-rounded {
     border-top-left-radius: 0;
