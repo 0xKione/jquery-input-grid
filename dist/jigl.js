@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.12 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.13 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -67,7 +67,7 @@ var Jigl = function() {
     var _dateResetSelector = false;
 
     // Private Functions
-    var showSelect = function(containerParentTag) {
+    var showSelect = function(containerParentTag, resetValue) {
         var dropdownTag = $(containerParentTag).find('.jigl-select-dropdown');
         if (dropdownTag.height() >= dropdownTag.css('max-height').replace(/[^-\d\.]/g, '')) {
             dropdownTag.width(dropdownTag.width() + 20);
@@ -90,6 +90,13 @@ var Jigl = function() {
 
         // Record the original value of the input field in case the user cancels
         _selectOrigVal = inputVal;
+
+        if (resetValue) {
+            $(containerParentTag).find('.jigl-field > div').text("");
+            $(containerParentTag).find('.jigl-option').each(function(index, element) {
+                $(element).show();
+            });
+        }
     };
 
     var hideSelect = function(containerParentTag, valueSelected) {
@@ -333,8 +340,10 @@ var Jigl = function() {
             }
         });
 
-        $(parentTagSelector).find('.jigl-autocomplete').on('keydown', function(event) {
-            var dropdownPanelTag = $(this).find('.jigl-autocomplete-dropdown');
+        $(parentTagSelector).find('.jigl-select, .jigl-autocomplete').on('keydown', function(event) {
+            var isSelect = $(this).hasClass('jigl-select');
+
+            var dropdownPanelTag = isSelect ? $(this).find('.jigl-select-dropdown') : $(this).find('.jigl-autocomplete-dropdown');
             var dropdownOptions = dropdownPanelTag.find('.jigl-option');
 
             if ($(this).hasClass('jigl-disabled')) {
@@ -343,8 +352,13 @@ var Jigl = function() {
 
             // If the dropdown is not visible, show it
             if (!dropdownPanelTag.is(':visible')) {
-                if (dropdownOptions.length > 0)
-                    showAutocomplete(this);
+                if (dropdownOptions.length > 0) {
+                    if (isSelect) {
+                        showSelect(this, true);
+                    } else {
+                        showAutocomplete(this);
+                    }
+                }
             }
 
             var inputTag = $(this).find('input');
@@ -362,7 +376,7 @@ var Jigl = function() {
                 return;
             }
 
-            var inputVal = inputTag.val();
+            var inputVal = isSelect ? fieldTag.find('div').text() : inputTag.val();
             if (key != "") {
                 inputVal = (inputVal + key);
             } else if (keyCode == 8) {
@@ -373,7 +387,11 @@ var Jigl = function() {
             inputVal = inputVal.toLowerCase().trim();
 
             if (inputVal.length == 0) {
-                hideAutocomplete(this);
+                if (isSelect) {
+                    hideSelect(this);
+                } else {
+                    hideAutocomplete(this);
+                }
                 return;
             }
 
@@ -397,7 +415,7 @@ var Jigl = function() {
             }
             
             if (!$(this).find('.jigl-select-dropdown').is(':visible')) {
-                showSelect(this);
+                showSelect(this, true);
             } else {
                 hideSelect(this, false);
             }
