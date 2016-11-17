@@ -948,7 +948,7 @@ var Jigl = function() {
                 // Textarea inputs
                 $(value).find('textarea').val("");
 
-                if ($(value).hasClass('.jigl-select')) {
+                if ($(value).hasClass('jigl-select')) {
                     $(value).find('.jigl-field > div').text("");
                     $(value).find('.jigl-field > div').attr("title", "")
                     $(value).find('input').val("-1");
