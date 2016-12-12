@@ -623,61 +623,7 @@ var Jigl = function() {
             overAutocompleteDropdown = false;
         });
 
-        $(parentTagSelector).find('.jigl-option').on('mouseover', function(event) {
-            // Remove selection from other classes if they have it
-            $(this).parent().find('.jigl-option-selected').removeClass('jigl-option-selected');
-            $(this).addClass('jigl-option-selected');
-
-            // If the option belongs to a select input or a range input
-            if ($(this).parents('.jigl-select').length > 0) {
-                $(this).parents('.jigl-container').find('.jigl-field div').html($(this).text());
-
-                $(this).parents('.jigl-select').resize();
-            } else {
-                // TODO: Remove?
-            }
-
-            // Trigger click to fix iOS double click issues
-            if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
-                $(this).click();
-            }
-        });
-
-        $(parentTagSelector).find('.jigl-option').on('click', function(event) {
-            event.stopPropagation();
-
-            // Check the type of input the option belongs to
-            if ($(this).parents('.jigl-select').length > 0) {
-                if ($(this).hasClass('jigl-option-selected')) {
-                    $(this).parents('.jigl-container').find('input').attr('value', $(this).attr('data-value'));
-                    $(this).parents('.jigl-container').find('input').val($(this).attr('data-value'));
-                    $(this).parents('.jigl-container').find('.jigl-field').attr('title', $(this).text());
-                    $(this).parents('.jigl-select').resize();
-                    $(this).parents('.jigl-select').find('input').change();
-                }
-
-                hideSelect($(this).parents('.jigl-select'), true);
-            } else if ($(this).parents('.jigl-range').length > 0) {
-                if ($(this).hasClass('jigl-option-min')) {
-                    $(this).parents('.jigl-range-container').find('.jigl-range-min').val($(this).text());
-                } else {
-                    $(this).parents('.jigl-range-container').find('.jigl-range-max').val($(this).text());
-                }
-            } else if ($(this).parents('.jigl-autocomplete').length > 0) {
-                if ($(this).hasClass('jigl-option-selected')) {
-                    $(this).parents('.jigl-autocomplete').data().val($(this).text().trim());
-                    $(this).parents('.jigl-autocomplete').resize();
-                    $(this).parents('.jigl-autocomplete').find('input').change();
-                    $(this).removeClass('jigl-option-selected');
-                }
-
-                hideAutocomplete($(this).parents('.jigl-autocomplete'));
-            }
-        });
-
-        $(parentTagSelector).find('.jigl-option').on('mouseleave', function(event) {
-            $(this).removeClass('jigl-option-selected');
-        });
+        Jigl.setUpSelectOptions(parentTagSelector);
     };
 
     var setUpValidation = function(parentTagSelector) {
@@ -1002,10 +948,72 @@ var Jigl = function() {
                 // Textarea inputs
                 $(value).find('textarea').val("");
 
-                if ($(value).hasClass('.jigl-select')) {
-                    $(value).find('.jigl-field > div').val("");
+                if ($(value).hasClass('jigl-select')) {
+                    $(value).find('.jigl-field > div').text("");
+                    $(value).find('.jigl-field > div').attr("title", "")
                     $(value).find('input').val("-1");
+                    $(value).find('input').attr("value", "-1")
                 }
+            });
+        },
+
+        setUpSelectOptions: function(parentTagSelector, onlyLast) {
+            var selector = onlyLast ? '.jigl-option:last-child' : '.jigl-option';
+
+            $(parentTagSelector).find(selector).on('mouseover', function(event) {
+                // Remove selection from other classes if they have it
+                $(this).parent().find('.jigl-option-selected').removeClass('jigl-option-selected');
+                $(this).addClass('jigl-option-selected');
+
+                // If the option belongs to a select input or a range input
+                if ($(this).parents('.jigl-select').length > 0) {
+                    $(this).parents('.jigl-container').find('.jigl-field div').html($(this).text());
+
+                    $(this).parents('.jigl-select').resize();
+                } else {
+                    // TODO: Remove?
+                }
+
+                // Trigger click to fix iOS double click issues
+                if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+                    $(this).click();
+                }
+            });
+
+            $(parentTagSelector).find(selector).on('click', function(event) {
+                event.stopPropagation();
+
+                // Check the type of input the option belongs to
+                if ($(this).parents('.jigl-select').length > 0) {
+                    if ($(this).hasClass('jigl-option-selected')) {
+                        $(this).parents('.jigl-container').find('input').attr('value', $(this).attr('data-value'));
+                        $(this).parents('.jigl-container').find('input').val($(this).attr('data-value'));
+                        $(this).parents('.jigl-container').find('.jigl-field').attr('title', $(this).text());
+                        $(this).parents('.jigl-select').resize();
+                        $(this).parents('.jigl-select').find('input').change();
+                    }
+
+                    hideSelect($(this).parents('.jigl-select'), true);
+                } else if ($(this).parents('.jigl-range').length > 0) {
+                    if ($(this).hasClass('jigl-option-min')) {
+                        $(this).parents('.jigl-range-container').find('.jigl-range-min').val($(this).text());
+                    } else {
+                        $(this).parents('.jigl-range-container').find('.jigl-range-max').val($(this).text());
+                    }
+                } else if ($(this).parents('.jigl-autocomplete').length > 0) {
+                    if ($(this).hasClass('jigl-option-selected')) {
+                        $(this).parents('.jigl-autocomplete').data().val($(this).text().trim());
+                        $(this).parents('.jigl-autocomplete').resize();
+                        $(this).parents('.jigl-autocomplete').find('input').change();
+                        $(this).removeClass('jigl-option-selected');
+                    }
+
+                    hideAutocomplete($(this).parents('.jigl-autocomplete'));
+                }
+            });
+
+            $(parentTagSelector).find(selector).on('mouseleave', function(event) {
+                $(this).removeClass('jigl-option-selected');
             });
         }
     }
