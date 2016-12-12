@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.14 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.15 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
