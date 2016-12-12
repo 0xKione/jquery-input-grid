@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.13 (https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.14 (https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -75,7 +75,8 @@
     border-bottom-right-radius: 5px; }
 
 .jigl-left {
-  border-right: 1px dotted gray; }
+  border-right: 1px dotted gray;
+  clear: left; }
   .jigl-left.jigl-rounded {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -98,7 +99,8 @@
 
 .jigl-top-left {
   border-right: 1px dotted gray;
-  border-bottom: 1px dotted gray; }
+  border-bottom: 1px dotted gray;
+  clear: left; }
   .jigl-top-left.jigl-rounded {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 0;
@@ -125,7 +127,8 @@
 .jigl-middle-left {
   border-top: none;
   border-right: 1px dotted gray;
-  border-bottom: 1px dotted gray; }
+  border-bottom: 1px dotted gray;
+  clear: left; }
   .jigl-middle-left.jigl-rounded {
     border-radius: 0; }
 
@@ -147,7 +150,8 @@
 
 .jigl-bottom-left {
   border-top: none;
-  border-right: 1px dotted gray; }
+  border-right: 1px dotted gray;
+  clear: left; }
   .jigl-bottom-left.jigl-rounded {
     border-top-left-radius: 0;
     border-bottom-left-radius: 5px;
@@ -263,7 +267,8 @@
       border-bottom-right-radius: 5px; }
   .jigl-left {
     border-right: 1px solid #666;
-    border-bottom: 1px dotted gray; }
+    border-bottom: 1px dotted gray;
+    clear: none; }
     .jigl-left.jigl-rounded {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 0;
@@ -286,7 +291,8 @@
       border-bottom-right-radius: 5px; }
   .jigl-top-left {
     border-right: 1px solid #666;
-    border-bottom: 1px dotted gray; }
+    border-bottom: 1px dotted gray;
+    clear: none; }
     .jigl-top-left.jigl-rounded {
       border-top-left-radius: 5px;
       border-bottom-left-radius: 0;
@@ -309,7 +315,8 @@
   .jigl-middle-left {
     border-right: 1px solid #666;
     border-bottom: 1px dotted gray;
-    border-left: 1px solid #666; }
+    border-left: 1px solid #666;
+    clear: left; }
     .jigl-middle-left.jigl-rounded {
       border-radius: 0; }
   .jigl-middle-center {
@@ -327,7 +334,8 @@
   .jigl-bottom-left {
     border-right: 1px solid #666;
     border-bottom: 1px dotted gray;
-    border-left: 1px solid #666; }
+    border-left: 1px solid #666;
+    clear: left; }
     .jigl-bottom-left.jigl-rounded {
       border-radius: 0; }
   .jigl-bottom-center {
