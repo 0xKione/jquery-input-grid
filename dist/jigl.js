@@ -1,5 +1,5 @@
 /*!
- * jigl v1.3.15 https://github.com/0xKione/jquery-input-grid)
+ * jigl v1.3.16 https://github.com/0xKione/jquery-input-grid)
  * Copyright (c) 2015 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
@@ -975,7 +975,7 @@ var Jigl = function() {
                 }
 
                 // Trigger click to fix iOS double click issues
-                if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+                if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)|(playbook)|(silk)/i)) {
                     $(this).click();
                 }
             });
