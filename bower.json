@@ -6,7 +6,7 @@
       "./dist/jigl.css"
     ],
     "dependencies": {
-        "font-awesome": "~4.3.0",
+        "font-awesome": "~4.7.0",
         "jquery": "~1.11.3"
     },
     "license": "MIT",
