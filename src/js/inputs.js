@@ -882,7 +882,7 @@ var Jigl = function() {
             $('.jigl-select').resize();
         },
 
-        validateContainer: function(containerTag) {
+        validateContainer: function(containerTag, markContainers) {
             $(containerTag).find('.jigl').each(function(index) {
                 // Select the correct tag to trigger event
                 var inputObj = $(this);
@@ -891,7 +891,7 @@ var Jigl = function() {
                 }
 
                 // Trigger the keyup event to validate
-                inputObj.trigger('keyup', { markInvalid: true });
+                inputObj.trigger('keyup', { markInvalid: markContainers });
             });
         },
 
