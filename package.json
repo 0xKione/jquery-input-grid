@@ -1,7 +1,16 @@
 {
-  "name": "jquery-input-grid",
-  "version": "1.2.0",
-  "dependencies": {},
+  "name": "jigl",
+  "version": "1.4.0",
+  "description": "A library built on top of jQuery to support multiple types of inputs that self-validate and provide a modern style.",
+  "keywords": [
+    "jquery",
+    "input",
+    "inputs"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^1.11.3"
+  },
   "devDependencies": {
     "browser-sync": "^2.16.0",
     "del": "^2.2.0",
@@ -19,6 +28,10 @@
     "run-sequence": "^1.1.5",
     "vinyl-paths": "^2.1.0"
   },
+  "files": [
+    "dist/*.js",
+    "dist/*.css"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

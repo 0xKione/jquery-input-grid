@@ -7,16 +7,24 @@ JIGL is a library of customizable form-compliant input fields and groups based o
 - A visually appealing style with built-in labels
 
 ## Latest Version
-1.3.16
+1.4.0
 
 ## Downloading Library
-This library is available using Bower. To use it in your project perform the following steps
+This library is available using Bower and NPM. To use it in your project perform the following steps:
 
+### Bower
 ```sh
 $ bower install jigl
 ```
 
 The main files for the library will be located in *bower_components/jigl/dist/*.
+
+### NPM
+```sh
+$ npm install jigl
+```
+
+The mains files for the library will be located in *node_modules/jigl/dist/*.
 
 There is a development version and a minified version for production.
 
@@ -49,7 +57,7 @@ And you're good to go!
 To learn the functionality of the library check out the [JIGL Usage](http://richardwgomez.com/index.php/jigl) page
 
 ## Status
-I am still actively contributing to this repository making improvements and bug fixes. This is my first real GitHub/Bower library so there have been a few unneccesary releases, but I am getting more familiar with that process.
+I am still actively contributing to this repository making improvements and bug fixes. This is my first real GitHub library so there have been a few unneccesary releases, but I am getting more familiar with that process.
 
 This library was originally designed to work with a web app I am developing called [WageKick](https://wagekick.com) and turned into a side project.
 
