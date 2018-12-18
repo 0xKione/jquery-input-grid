@@ -1,6 +1,6 @@
 /*!
- * jigl v1.3.16 (https://github.com/0xKione/jquery-input-grid)
- * Copyright (c) 2015 Rich Gomez
+ * jigl v1.4.0 (https://github.com/0xKione/jquery-input-grid)
+ * Copyright (c) 2015-2017 Rich Gomez
  * Licensed under the MIT license (https://github.com/0xKione/jquery-input-grid/blob/master/LICENSE)
  */
 .jigl:focus {
@@ -213,7 +213,7 @@
   height: 26px;
   font-size: 15px;
   font-weight: 600;
-  width: 100%;
+  width: 99%;
   outline: 0;
   overflow: hidden;
   white-space: nowrap; }
